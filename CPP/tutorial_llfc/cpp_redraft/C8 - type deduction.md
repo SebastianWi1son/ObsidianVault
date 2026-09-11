@@ -36,7 +36,7 @@ const pstring *pstr_on_declared;    // 指向 "char* const" 的指针
 - 想当然地把别名替换成`const char*`是本节唯一的坑
 
 > pstring已经是"指向char的指针"这个**整体类型**，const修饰的是这个整体，即top-level const
-> 别名不是文本替换，要当成一个新类型名来理解；top/low-level 见 [[CPP/cpp_redraft/C7 - const]]
+> 别名不是文本替换，要当成一个新类型名来理解；top/low-level 见 [[../cpp/C7 - const]]
 
 ## 4. auto 基本用法
 

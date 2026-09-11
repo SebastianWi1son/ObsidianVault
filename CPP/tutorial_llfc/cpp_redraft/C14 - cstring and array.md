@@ -79,7 +79,7 @@ auto ia(array);                          // ia 是 int*，指向首元素
 decltype(array) ia2 = { 2, 4, 6, 8 };    // ia2's also a array with size 10，后 6 个补 0
 ```
 
-数组与指针的更多关系见 [[CPP/cpp_redraft/C6 - pointer]]。
+数组与指针的更多关系见 [[C6 - pointer]]。
 
 ## 5. 指针当迭代器用
 

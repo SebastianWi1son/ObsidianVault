@@ -1,0 +1,428 @@
+{
+	"nodes": [
+		{
+			"id": "470ba15a30224a83",
+			"type": "text",
+			"text": "main.i",
+			"x": -140,
+			"y": 240,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "42202a02c6f0a598",
+			"type": "text",
+			"text": "prepocess",
+			"x": -140,
+			"y": 120,
+			"width": 250,
+			"height": 60,
+			"color": "6"
+		},
+		{
+			"id": "3c6f30adaf4fd31b",
+			"type": "text",
+			"text": "main.cpp",
+			"x": -140,
+			"y": 0,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "f75f5cc8c0bebc43",
+			"type": "text",
+			"text": "compoile",
+			"x": -140,
+			"y": 360,
+			"width": 250,
+			"height": 60,
+			"color": "6"
+		},
+		{
+			"id": "798836443cc28219",
+			"type": "text",
+			"text": "main.s (assemble code)",
+			"x": -140,
+			"y": 480,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "515b14c08f5f3ac5",
+			"type": "text",
+			"text": "assemble",
+			"x": -140,
+			"y": 600,
+			"width": 250,
+			"height": 60,
+			"color": "6"
+		},
+		{
+			"id": "38761b1ef5d01453",
+			"type": "text",
+			"text": "linker",
+			"x": -140,
+			"y": 880,
+			"width": 250,
+			"height": 60,
+			"color": "6"
+		},
+		{
+			"id": "35a35db7bc4b372c",
+			"type": "text",
+			"text": "main.o (ELF relocatable 半成品)",
+			"x": -165,
+			"y": 720,
+			"width": 300,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "8c9b8004433f1b5b",
+			"type": "text",
+			"text": "main (ELF executable 成品)",
+			"x": -140,
+			"y": 1240,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "839d7e68f252167b",
+			"type": "text",
+			"text": "main_static",
+			"x": 160,
+			"y": 1240,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "ff2fdeacbfe1ce13",
+			"type": "text",
+			"text": "mathx.o",
+			"x": -520,
+			"y": 760,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "7b30ecb8a78c3af7",
+			"type": "text",
+			"text": "libstdc++.so",
+			"x": -520,
+			"y": 880,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "6f876d327714af2a",
+			"type": "text",
+			"text": "libc++.so",
+			"x": -520,
+			"y": 1000,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "5125152a542adba7",
+			"type": "text",
+			"text": "配对U T",
+			"x": 220,
+			"y": 880,
+			"width": 250,
+			"height": 60,
+			"color": "3"
+		},
+		{
+			"id": "8de2df1f2ee246de",
+			"type": "text",
+			"text": "预处理器不懂语法",
+			"x": 210,
+			"y": 120,
+			"width": 270,
+			"height": 60,
+			"color": "3"
+		},
+		{
+			"id": "ef802a587b560dd7",
+			"type": "text",
+			"text": "编译器需要知道函数长什么样 声明",
+			"x": 200,
+			"y": 360,
+			"width": 270,
+			"height": 60,
+			"color": "3"
+		},
+		{
+			"id": "f8991e3387e5e6da",
+			"type": "text",
+			"text": "No such file or directory ",
+			"x": 600,
+			"y": 123,
+			"width": 250,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "86bb4b79b4a0ba73",
+			"type": "text",
+			"text": "'xxx' is not a member of ...",
+			"x": 600,
+			"y": 450,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "56540ded0f5609e9",
+			"type": "text",
+			"text": "'xxx' was not declared",
+			"x": 600,
+			"y": 327,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "a4b15b51286716ba",
+			"type": "text",
+			"text": "cc1plus",
+			"x": 1005,
+			"y": 327,
+			"width": 250,
+			"height": 60,
+			"color": "4"
+		},
+		{
+			"id": "c4f37ab8f5fa9659",
+			"type": "text",
+			"text": "undefined reference to 'xxx' 见过声明但未找到实现",
+			"x": 600,
+			"y": 820,
+			"width": 440,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "10da499f6f97be0e",
+			"type": "text",
+			"text": "multiple definition of xxx 重定义",
+			"x": 600,
+			"y": 970,
+			"width": 300,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "b73e0f70c1db9a39",
+			"type": "text",
+			"text": "ld",
+			"x": 1130,
+			"y": 970,
+			"width": 250,
+			"height": 60,
+			"color": "4"
+		},
+		{
+			"id": "1aa84534f2317a6f",
+			"type": "text",
+			"text": "mathx.h",
+			"x": -520,
+			"y": 0,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		}
+	],
+	"edges": [
+		{
+			"id": "cd1ccda4d4d7cb9a",
+			"fromNode": "3c6f30adaf4fd31b",
+			"fromSide": "bottom",
+			"toNode": "42202a02c6f0a598",
+			"toSide": "top"
+		},
+		{
+			"id": "90a1d7029c4801f6",
+			"fromNode": "42202a02c6f0a598",
+			"fromSide": "bottom",
+			"toNode": "470ba15a30224a83",
+			"toSide": "top"
+		},
+		{
+			"id": "43ed23a8837fcf91",
+			"fromNode": "470ba15a30224a83",
+			"fromSide": "bottom",
+			"toNode": "f75f5cc8c0bebc43",
+			"toSide": "top"
+		},
+		{
+			"id": "8bb1af0ad40fa24a",
+			"fromNode": "f75f5cc8c0bebc43",
+			"fromSide": "bottom",
+			"toNode": "798836443cc28219",
+			"toSide": "top"
+		},
+		{
+			"id": "6650bdf5c9fff02b",
+			"fromNode": "798836443cc28219",
+			"fromSide": "bottom",
+			"toNode": "515b14c08f5f3ac5",
+			"toSide": "top"
+		},
+		{
+			"id": "aa201ceeaabba913",
+			"fromNode": "515b14c08f5f3ac5",
+			"fromSide": "bottom",
+			"toNode": "35a35db7bc4b372c",
+			"toSide": "top"
+		},
+		{
+			"id": "16c26f573c90cd9a",
+			"fromNode": "35a35db7bc4b372c",
+			"fromSide": "bottom",
+			"toNode": "38761b1ef5d01453",
+			"toSide": "top"
+		},
+		{
+			"id": "66a2ee6b10528e8b",
+			"fromNode": "38761b1ef5d01453",
+			"fromSide": "bottom",
+			"toNode": "8c9b8004433f1b5b",
+			"toSide": "top"
+		},
+		{
+			"id": "a8100d634092dfcc",
+			"fromNode": "ff2fdeacbfe1ce13",
+			"fromSide": "right",
+			"toNode": "38761b1ef5d01453",
+			"toSide": "left"
+		},
+		{
+			"id": "ef20a4c40f937fe0",
+			"fromNode": "38761b1ef5d01453",
+			"fromSide": "bottom",
+			"toNode": "839d7e68f252167b",
+			"toSide": "top"
+		},
+		{
+			"id": "917bb5643c885f3e",
+			"fromNode": "a4b15b51286716ba",
+			"fromSide": "left",
+			"toNode": "f8991e3387e5e6da",
+			"toSide": "right"
+		},
+		{
+			"id": "07617380cd7ae0c2",
+			"fromNode": "a4b15b51286716ba",
+			"fromSide": "left",
+			"toNode": "56540ded0f5609e9",
+			"toSide": "right"
+		},
+		{
+			"id": "f7f25ef9bf278fd3",
+			"fromNode": "a4b15b51286716ba",
+			"fromSide": "left",
+			"toNode": "86bb4b79b4a0ba73",
+			"toSide": "right"
+		},
+		{
+			"id": "54421d144f30c082",
+			"fromNode": "b73e0f70c1db9a39",
+			"fromSide": "left",
+			"toNode": "c4f37ab8f5fa9659",
+			"toSide": "right"
+		},
+		{
+			"id": "96213cfc8ffb11f7",
+			"fromNode": "b73e0f70c1db9a39",
+			"fromSide": "left",
+			"toNode": "10da499f6f97be0e",
+			"toSide": "right"
+		},
+		{
+			"id": "e0393e5a61e0917f",
+			"fromNode": "7b30ecb8a78c3af7",
+			"fromSide": "right",
+			"toNode": "38761b1ef5d01453",
+			"toSide": "left"
+		},
+		{
+			"id": "d89d8181d2f98fdb",
+			"fromNode": "6f876d327714af2a",
+			"fromSide": "right",
+			"toNode": "38761b1ef5d01453",
+			"toSide": "left"
+		},
+		{
+			"id": "c46efe21958b4bfd",
+			"fromNode": "1aa84534f2317a6f",
+			"fromSide": "right",
+			"toNode": "42202a02c6f0a598",
+			"toSide": "left"
+		},
+		{
+			"id": "b0f9c82c3d29f2c9",
+			"fromNode": "38761b1ef5d01453",
+			"fromSide": "right",
+			"toNode": "5125152a542adba7",
+			"toSide": "left"
+		},
+		{
+			"id": "6402f5bc6e4216e4",
+			"fromNode": "5125152a542adba7",
+			"fromSide": "right",
+			"toNode": "c4f37ab8f5fa9659",
+			"toSide": "left"
+		},
+		{
+			"id": "58ae1bc88d29de44",
+			"fromNode": "5125152a542adba7",
+			"fromSide": "right",
+			"toNode": "10da499f6f97be0e",
+			"toSide": "left"
+		},
+		{
+			"id": "fa024fa126401008",
+			"fromNode": "f75f5cc8c0bebc43",
+			"fromSide": "right",
+			"toNode": "ef802a587b560dd7",
+			"toSide": "left"
+		},
+		{
+			"id": "f8b391665aa91599",
+			"fromNode": "42202a02c6f0a598",
+			"fromSide": "right",
+			"toNode": "8de2df1f2ee246de",
+			"toSide": "left"
+		},
+		{
+			"id": "51ab1404d20b7e9b",
+			"fromNode": "8de2df1f2ee246de",
+			"fromSide": "right",
+			"toNode": "f8991e3387e5e6da",
+			"toSide": "left"
+		},
+		{
+			"id": "94455cb2cea2f487",
+			"fromNode": "ef802a587b560dd7",
+			"fromSide": "right",
+			"toNode": "56540ded0f5609e9",
+			"toSide": "left"
+		},
+		{
+			"id": "3a16303486f63add",
+			"fromNode": "ef802a587b560dd7",
+			"fromSide": "right",
+			"toNode": "86bb4b79b4a0ba73",
+			"toSide": "left"
+		}
+	]
+}

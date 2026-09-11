@@ -137,4 +137,4 @@ void calc_matrix_add(const int m1[][matrix_col], const int m2[][matrix_col],
 ## 9. 关联
 
 - 一维数组退化前置：[[C14 - cstring and array]]
-- 指针基础回顾：[[CPP/cpp_redraft/C6 - pointer]]
+- 指针基础回顾：[[C6 - pointer]]

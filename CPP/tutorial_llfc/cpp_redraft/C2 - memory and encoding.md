@@ -9,7 +9,7 @@ std::cout << c + d << std::endl;   // 浮点支持 + - * /
 ```
 -  **整型** int：支持 `+ - * / %` 等算术运算
 -  **浮点** float / double：支持 `+ - * /`
--  **字符** char：也能参与计算 → 原因见 [[#2. ASCII 码表（编码原理）|ASCII]]
+-  **字符** char：也能参与计算 → 原因见 [[C2 - memory and encoding#2. ASCII 码表（编码原理）|ASCII]]
 
 ## 2. ASCII 码表（编码原理）
 -  **ASCII**：给 128 个字符（0–127）各分配唯一数字编码，覆盖英文字母（大小写）、数字、标点、控制字符（换行、回车等）
@@ -32,7 +32,7 @@ std::cout << (int)(g + h) << std::endl;   // 195：字符按整数参与运算
 | float | 4 |
 | double | 8 |
 | long long | 8 |
--  佐证（d2-6-pointer 实测）：`sizeof(void*)`、`sizeof(int*)`、`sizeof(double*)` 全输出 **8**，指针大小固定、不随指向类型变 → [[CPP/cpp_redraft/C6 - pointer]]
+-  佐证（d2-6-pointer 实测）：`sizeof(void*)`、`sizeof(int*)`、`sizeof(double*)` 全输出 **8**，指针大小固定、不随指向类型变 → [[C6 - pointer]]
 
 ## 4. 类型转换
 -  内置类型 C++ 会**自动推导转换**，复合类型之后再介绍；**1B = 8bit**，1 字节最大能表示 127

@@ -1,0 +1,169 @@
+{
+	"nodes": [
+		{
+			"id": "3a4d5a4108d2aa76",
+			"x": -140,
+			"y": -260,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "CMake"
+		},
+		{
+			"id": "137fd7687f5250c3",
+			"x": -140,
+			"y": 40,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "Ninja"
+		},
+		{
+			"id": "a1acb59277e6b254",
+			"x": -140,
+			"y": -120,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "build.ninja"
+		},
+		{
+			"id": "c19802dbc9aec3d6",
+			"x": -140,
+			"y": 200,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "GCC/G++"
+		},
+		{
+			"id": "9d7c1ec8e348d22d",
+			"x": -140,
+			"y": -560,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "code"
+		},
+		{
+			"id": "cc212265146126c0",
+			"x": -140,
+			"y": -420,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "CMakeLists"
+		},
+		{
+			"id": "3cfdc12dc7acd060",
+			"x": 260,
+			"y": -120,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "Makefile"
+		},
+		{
+			"id": "5a6f31662af9fbd6",
+			"x": 260,
+			"y": 40,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "make"
+		},
+		{
+			"id": "9b1292eabe625a8a",
+			"x": -140,
+			"y": 360,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": ".elf"
+		},
+		{
+			"id": "88f6d30704d42f0f",
+			"x": -140,
+			"y": 520,
+			"width": 250,
+			"height": 60,
+			"type": "text",
+			"text": "openOCD"
+		}
+	],
+	"edges": [
+		{
+			"id": "d24236507fb7f1c1",
+			"fromNode": "3a4d5a4108d2aa76",
+			"fromSide": "bottom",
+			"toNode": "a1acb59277e6b254",
+			"toSide": "top",
+			"label": "generate"
+		},
+		{
+			"id": "c28f7e93bd8c0d98",
+			"fromNode": "a1acb59277e6b254",
+			"fromSide": "bottom",
+			"toNode": "137fd7687f5250c3",
+			"toSide": "top",
+			"label": "run"
+		},
+		{
+			"id": "4911f3caa69c0e40",
+			"fromNode": "137fd7687f5250c3",
+			"fromSide": "bottom",
+			"toNode": "c19802dbc9aec3d6",
+			"toSide": "top",
+			"label": "run"
+		},
+		{
+			"id": "04e23c62d5e74fb9",
+			"fromNode": "9d7c1ec8e348d22d",
+			"fromSide": "bottom",
+			"toNode": "cc212265146126c0",
+			"toSide": "top"
+		},
+		{
+			"id": "84b3eea36920c356",
+			"fromNode": "cc212265146126c0",
+			"fromSide": "bottom",
+			"toNode": "3a4d5a4108d2aa76",
+			"toSide": "top"
+		},
+		{
+			"id": "c55627a6fa67b268",
+			"fromNode": "3a4d5a4108d2aa76",
+			"fromSide": "right",
+			"toNode": "3cfdc12dc7acd060",
+			"toSide": "top"
+		},
+		{
+			"id": "8d8605ac46bf1662",
+			"fromNode": "3cfdc12dc7acd060",
+			"fromSide": "bottom",
+			"toNode": "5a6f31662af9fbd6",
+			"toSide": "top"
+		},
+		{
+			"id": "209a96a91ddd2baf",
+			"fromNode": "5a6f31662af9fbd6",
+			"fromSide": "bottom",
+			"toNode": "c19802dbc9aec3d6",
+			"toSide": "right"
+		},
+		{
+			"id": "24397026731275df",
+			"fromNode": "c19802dbc9aec3d6",
+			"fromSide": "bottom",
+			"toNode": "9b1292eabe625a8a",
+			"toSide": "top"
+		},
+		{
+			"id": "72e9212af2128984",
+			"fromNode": "9b1292eabe625a8a",
+			"fromSide": "bottom",
+			"toNode": "88f6d30704d42f0f",
+			"toSide": "top"
+		}
+	]
+}

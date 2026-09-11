@@ -48,7 +48,7 @@ const std::vector<int> numbers = { 10, 20, 30 };
 auto it_01 = numbers.begin();    // 对象是 const，begin() 返回的就是 const_iterator
 auto it_02 = numbers.cbegin();   // C++11：非常量对象也能主动要 const 迭代器
 ```
--  **iterator / const_iterator**容器自己定义的两种迭代器类型，类比"指向常量的指针"（[[CPP/cpp_redraft/C7 - const]]）
+-  **iterator / const_iterator**容器自己定义的两种迭代器类型，类比"指向常量的指针"（[[C7 - const]]）
 -  **返回类型由对象决定**const 对象的 begin()/end() 返回 const_iterator；cbegin()/cend() 永远返回 const_iterator
 -  **精确类型**同 size_type 一样无需关心，auto 接住即可
 

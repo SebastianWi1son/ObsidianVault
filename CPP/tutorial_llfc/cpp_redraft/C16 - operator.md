@@ -75,7 +75,7 @@ const char* rank = (score > 1000) ? "predator" : "master";
 std::cout << rank << std::endl;    // predator
 ```
 
-> 为什么 rank 是 const char*：两个字面值分别是 const char[9] / const char[7]，都要退化（decay）成 const char* 才有公共类型——三目的两个分支会向公共类型隐式转换，见 [[CPP/cpp_redraft/C8 - type deduction]]。
+> 为什么 rank 是 const char*：两个字面值分别是 const char[9] / const char[7]，都要退化（decay）成 const char* 才有公共类型——三目的两个分支会向公共类型隐式转换，见 [[C8 - type deduction]]。
 
 ## 3. sizeof：返回所占字节数
 

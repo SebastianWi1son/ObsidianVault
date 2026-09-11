@@ -1,7 +1,7 @@
 ## 1. 函数：把一段逻辑打包成名字
 -  **函数（function）**执行特定任务的代码块：`return_type name(params) { body }`，定义一次、多处调用
 -  主项目 d8-17-function：全部写在 main.cpp 里、用 `{}` 块分段；inc/func.h 和 src/func.cpp 建了但基本空着
--  真正的声明/定义分离在 test 项目里完成，见 [[#8. 练习记录：d8-17-test-function|第 8 节]]
+-  真正的声明/定义分离在 test 项目里完成，见 [[C18 - function#8. 练习记录：d8-17-test-function|第 8 节]]
 
 > 函数是"打包 + 复用"：对外只暴露签名（返回类型 + 参数列表），实现藏在函数体里，调用者不需要知道内部怎么算
 
@@ -36,7 +36,7 @@ int* arr = allocateArray(10);   // main.cpp
 for (size_t i = 0; i < 10; i++) { std::cout << arr[i] << "  "; }   // 0 2 4 6 8 10 12 14 16 18
 delete [] arr;                 // 谁调用谁负责释放
 ```
--  与第 2 节错误示范对照：**堆内存**不随函数结束回收，所以能返回；内存责任跟着指针走（[[CPP/cpp_redraft/C6 - pointer]]）
+-  与第 2 节错误示范对照：**堆内存**不随函数结束回收，所以能返回；内存责任跟着指针走（[[C6 - pointer]]）
 
 ## 4. 函数重载：同名不同参
 ```cpp
@@ -150,7 +150,7 @@ int* create_fibonacci(size_t &size) {
     return arr;
 }
 ```
--  main.cpp：`if (fibonacci != nullptr)` 先判空再用，最后 `delete []arr; delete []fibonacci;` 统一释放——与第 3 节同理，**堆内存**能跨函数返回（[[CPP/cpp_redraft/C6 - pointer]]）
+-  main.cpp：`if (fibonacci != nullptr)` 先判空再用，最后 `delete []arr; delete []fibonacci;` 统一释放——与第 3 节同理，**堆内存**能跨函数返回（[[C6 - pointer]]）
 ### c. `const int arr[]` 只读参数：态度写在签名里
 ```cpp
 // --- func.cpp ---
@@ -160,7 +160,7 @@ void print_array(const int arr[], size_t size) {   // 只看不改，承诺不�
 }
 ```
 -  对照 `bubble_sort(int arr[], size_t size)` 不带 const：就地 `std::swap(arr[j], arr[j+1])`，明确"会动你的数据"；提前有序则 `if (!is_swapped) break;`
-> 数组形参本质是指针（只传首地址），函数里拿不到长度，所以 size 必须单独传/带出——这是模式 a 存在的根本原因（[[CPP/cpp_redraft/C6 - pointer]]）
+> 数组形参本质是指针（只传首地址），函数里拿不到长度，所以 size 必须单独传/带出——这是模式 a 存在的根本原因（[[C6 - pointer]]）
 
 ## 10. 课件有、我没敲的
 -  **changeValue 三连对照**：同一个函数分别用 `int num` / `int &num` / `int *num`，观察函数外变量变不变（值传递为什么改不了外界的对照实验）

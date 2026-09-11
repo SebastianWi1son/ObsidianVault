@@ -11,7 +11,7 @@ int main() {
 ```
 -  **main** 是程序**入口**：可执行文件从这里开始跑，每个工程只有一个
 -  **return 0** 表示正常退出；返回非 0 一般表示出错
--  main 里只管流程，真正的打印在 hello.cpp 里 → 结构见 [[#3. 多文件工程雏形|多文件工程雏形]]
+-  main 里只管流程，真正的打印在 hello.cpp 里 → 结构见 [[C1 - variable and output#3. 多文件工程雏形|多文件工程雏形]]
 
 > 一个函数做一件事：main 负责调度，print_hello_cpp() 负责打印；这是后面把代码拆成多个文件的起点。
 
@@ -112,5 +112,5 @@ std::cout << "Variable value is " << num_03 << std::endl;
 // Variable value is 12
 ```
 -  函数的 **return** 值就是一个普通值，可以直接拿来初始化变量
--  实现在另一个 .cpp 里，main 照样能调 → 靠 [[#3. 多文件工程雏形|多文件工程]] + .h 里的 declaration
+-  实现在另一个 .cpp 里，main 照样能调 → 靠 [[C1 - variable and output#3. 多文件工程雏形|多文件工程]] + .h 里的 declaration
 -  机制细节 → [[C3 - header and source]]

@@ -10,7 +10,7 @@ ptr = ptr_int;
 // *ptr X
 ```
 -  空指针:     **可 再赋值**
--  无效指针: **不可 [[#3. 解引用dereference|解引用]]**
+-  无效指针: **不可 [[../cpp_redraft/C6 - pointer#3. 解引用dereference|解引用]]**
 
 ## 3. 解引用dereference
 ```cpp
@@ -23,7 +23,7 @@ int var_02 = *ptr; // dereference
 
 ## 4. 万能指针generic pointer
 -  接受**任何类型**的**指针赋值**
--  [[#3. 解引用dereference|解应用]]之前必须类型转换
+-  [[../cpp_redraft/C6 - pointer#3. 解引用dereference|解应用]]之前必须类型转换
 - ```cpp
   *((double*)generic_ptr)
   ```
