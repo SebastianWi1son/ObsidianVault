@@ -1,0 +1,22 @@
+{
+	"nodes":[
+		{"id":"loop","type":"file","file":"gimbal_rtos_baseline/FOC/control_loop.md","x":480,"y":-645,"width":540,"height":580},
+		{"id":"enc","type":"text","text":"cached raw angle\nSensorTask 1 ms 更新","x":-800,"y":-410,"width":240,"height":110},
+		{"id":"sensor","type":"file","file":"gimbal_rtos_baseline/FOC/sensor_to_angle.md","x":-420,"y":-620,"width":340,"height":530},
+		{"id":"state","type":"text","text":"abs_angle\nvelocity\nfull_rotations","x":0,"y":-420,"width":230,"height":130},
+		{"id":"target","type":"text","text":"target_angle\n来自 tele / gimbal mapping","x":40,"y":-880,"width":250,"height":110},
+		{"id":"isr","type":"text","text":"所有运行态控制都在\nTIM2 1 kHz ISR","x":-385,"y":80,"width":270,"height":100},
+		{"id":"current","type":"text","text":"ia ib -> iq id\n仅 CURRENT/TORQUE 闭环","x":610,"y":240,"width":280,"height":120},
+		{"id":"pwm","type":"text","text":"ua ub uc\nboard PWM callback","x":1300,"y":-415,"width":230,"height":120}
+	],
+	"edges":[
+		{"id":"a","fromNode":"enc","fromSide":"right","toNode":"sensor","toSide":"left"},
+		{"id":"b","fromNode":"sensor","fromSide":"right","toNode":"state","toSide":"left"},
+		{"id":"c","fromNode":"state","fromSide":"right","toNode":"loop","toSide":"left"},
+		{"id":"d","fromNode":"target","fromSide":"bottom","toNode":"loop","toSide":"left"},
+		{"id":"e","fromNode":"current","fromSide":"top","toNode":"loop","toSide":"bottom","label":"inner loop"},
+		{"id":"f","fromNode":"loop","fromSide":"right","toNode":"pwm","toSide":"left","label":"SVPWM"},
+		{"id":"g","fromNode":"isr","fromSide":"top","toNode":"sensor","toSide":"bottom"},
+		{"id":"h","fromNode":"isr","fromSide":"right","toNode":"loop","toSide":"left"}
+	]
+}

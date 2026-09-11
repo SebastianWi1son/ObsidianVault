@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"8095099b2a40f5a8","type":"file","file":"gimbal/FOC/foc_angle_control_tick.canvas","x":-99,"y":-21,"width":400,"height":400},
+		{"id":"a843ff7221e6a4e7","x":460,"y":-21,"width":400,"height":400,"type":"file","file":"gimbal/tele.canvas"}
+	],
+	"edges":[]
+}

@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"707c04d3f8049e48","type":"text","text":"**open_loop(openloop_start:50)**","x":-760,"y":-160,"width":290,"height":60,"color":"1"},
+		{"id":"382525722f35dd83","type":"text","text":"**MotorRun:1(EN)**","x":-360,"y":-160,"width":185,"height":60,"color":"4"},
+		{"id":"bfd757f331aec78e","type":"text","text":"tele","x":-267,"y":-460,"width":147,"height":60,"color":"6"},
+		{"id":"25a3fa86b552a005","type":"text","text":"**param (Iq_Kp: 8.0f)**","x":144,"y":-160,"width":205,"height":60,"color":"5"},
+		{"id":"772d01d8bbe98439","type":"text","text":"**motor_service_group_set_enabled()**","x":-437,"y":90,"width":340,"height":50,"color":"6"},
+		{"id":"db81663ddff24b50","type":"text","text":"**motor_service_tune_step(0.3, 2000)**","x":540,"y":80,"width":364,"height":60,"color":"6"},
+		{"id":"00be4f136052cf28","type":"text","text":"**tune_step(debug_step:0.3)**","x":590,"y":-160,"width":265,"height":60,"color":"5"},
+		{"id":"ae965bb48ae98f81","type":"text","text":"**motor_service_set_param(PARAM_IQ_KP, 15) **","x":44,"y":220,"width":406,"height":60,"color":"6"},
+		{"id":"d41f3772684018f5","x":122,"y":620,"width":250,"height":60,"color":"6","type":"text","text":"motor_param"},
+		{"id":"089a5359f09ebce8","type":"file","file":"motor_tune.canvas","x":523,"y":280,"width":400,"height":400,"color":"6"}
+	],
+	"edges":[
+		{"id":"a87dfcaa880c7fe0","fromNode":"382525722f35dd83","fromSide":"bottom","toNode":"772d01d8bbe98439","toSide":"top"},
+		{"id":"6c42ad72f3eb5292","fromNode":"25a3fa86b552a005","fromSide":"bottom","toNode":"ae965bb48ae98f81","toSide":"top"},
+		{"id":"ebfa8f9c6c993b6b","fromNode":"00be4f136052cf28","fromSide":"bottom","toNode":"db81663ddff24b50","toSide":"top"},
+		{"id":"0558f785e7d1df6d","fromNode":"db81663ddff24b50","fromSide":"bottom","toNode":"089a5359f09ebce8","toSide":"top"},
+		{"id":"df569a239e412984","fromNode":"ae965bb48ae98f81","fromSide":"bottom","toNode":"d41f3772684018f5","toSide":"top"}
+	]
+}

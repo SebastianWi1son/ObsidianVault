@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"runtime","type":"text","text":"FOC / ADC / encoder\nsafety / RTOS diagnostics","x":-500,"y":-100,"width":280,"height":130},
+		{"id":"snap","type":"text","text":"tele_snapshot_collect\n一次收集完整快照","x":-100,"y":-100,"width":270,"height":120},
+		{"id":"frame","type":"text","text":"tele_frame_fill\nCH0-21 stable\nCH22-29 by diag_page","x":300,"y":-100,"width":280,"height":140},
+		{"id":"send","type":"text","text":"justfloat_send\nTX busy 则丢新帧\n不覆盖活动 DMA buffer","x":720,"y":-100,"width":280,"height":150}
+	],
+	"edges":[
+		{"id":"a","fromNode":"runtime","toNode":"snap","fromSide":"right","toSide":"left"},
+		{"id":"b","fromNode":"snap","toNode":"frame","fromSide":"right","toSide":"left"},
+		{"id":"c","fromNode":"frame","toNode":"send","fromSide":"right","toSide":"left"}
+	]
+}

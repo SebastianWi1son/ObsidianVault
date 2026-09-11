@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"rtos","type":"file","file":"gimbal_rtos_baseline/FreeRTOS/FreeRTOS_current.canvas","x":-160,"y":720,"width":360,"height":240},
+		{"id":"foc","type":"file","file":"gimbal_rtos_baseline/FOC/FOC_current.canvas","x":-980,"y":-40,"width":360,"height":240},
+		{"id":"safety","type":"file","file":"gimbal_rtos_baseline/Safety/Safety_current.canvas","x":880,"y":120,"width":360,"height":240},
+		{"id":"tele","type":"file","file":"gimbal_rtos_baseline/Tele/Tele_current.canvas","x":-60,"y":270,"width":360,"height":240},
+		{"id":"motor","type":"text","text":"motor runtime\nangle / velocity / current\ntarget / enable / PWM","x":-340,"y":-560,"width":280,"height":150},
+		{"id":"diag","type":"text","text":"telemetry snapshot\nCH0-29 + diag_page","x":800,"y":-560,"width":260,"height":120}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"motor","fromSide":"top","toNode":"foc","toSide":"bottom","label":"control state"},
+		{"id":"e2","fromNode":"tele","fromSide":"bottom","toNode":"motor","toSide":"top","label":"command target"},
+		{"id":"e3","fromNode":"motor","fromSide":"right","toNode":"diag","toSide":"left","label":"shared-read snapshot"},
+		{"id":"e4","fromNode":"safety","fromSide":"left","toNode":"motor","toSide":"right","label":"stop / inhibit run"},
+		{"id":"e5","fromNode":"safety","fromSide":"bottom","toNode":"diag","toSide":"top","label":"fault transparency"},
+		{"id":"e6","fromNode":"rtos","fromSide":"top","toNode":"foc","toSide":"bottom","label":"TIM2 ISR context"},
+		{"id":"e7","fromNode":"rtos","fromSide":"top","toNode":"tele","toSide":"bottom","label":"Comm + Tele tasks"},
+		{"id":"e8","fromNode":"rtos","fromSide":"top","toNode":"safety","toSide":"bottom","label":"Sensor + App tasks"}
+	]
+}

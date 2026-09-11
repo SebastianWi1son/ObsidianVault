@@ -1,0 +1,41 @@
+{
+	"nodes":[
+		{"id":"01a66b272b01f6db","type":"file","file":"gimbal/FOC/foc_attachments/foc_svpwm_write.md","x":-360,"y":220,"width":662,"height":480,"color":"6"},
+		{"id":"accb31332ccddde8","type":"file","file":"gimbal/FOC/foc_attachments/foc_current_step.md","x":-1187,"y":40,"width":721,"height":600,"color":"6"},
+		{"id":"b046225e72504d0b","type":"text","text":"MODE_TORQUE","x":-1187,"y":-300,"width":186,"height":60,"color":"1"},
+		{"id":"bce5410ff7ef681c","type":"text","text":"MODE_CURRENT","x":-646,"y":-300,"width":180,"height":60,"color":"1"},
+		{"id":"7fc9afbf468d8e97","type":"text","text":"MODE_VOLTAGE","x":-119,"y":-300,"width":180,"height":60,"color":"1"},
+		{"id":"377f7d83feb01665","type":"text","text":"vel_loop","x":-101,"y":-560,"width":145,"height":60,"color":"6"},
+		{"id":"c3e7c218d2ef1b7d","type":"text","text":"angle_loop","x":-101,"y":-780,"width":145,"height":60,"color":"6"},
+		{"id":"caf82b11e022ecce","type":"text","text":"abs_angle","x":320,"y":-920,"width":140,"height":60,"color":"5"},
+		{"id":"f4ee1cad05f79a9f","type":"text","text":"velocity","x":320,"y":-560,"width":140,"height":60,"color":"5"},
+		{"id":"0687882849a85092","type":"text","text":"angle_elec","x":-101,"y":-1040,"width":145,"height":60,"color":"5"},
+		{"id":"980382ef65487c8b","type":"text","text":"motor_bldc_set_pwm","x":-154,"y":900,"width":250,"height":60,"color":"2"},
+		{"id":"ae326d53465898e2","type":"file","file":"gimbal/FOC/foc_attachments/foc_sensor_update.canvas","x":560,"y":220,"width":400,"height":400,"color":"6"},
+		{"id":"f3c25611c08dffef","type":"text","text":"magn_abs_xxx","x":1120,"y":760,"width":250,"height":60,"color":"2"},
+		{"id":"c41cbf27c768f7f8","type":"file","file":"foc_current_update.md","x":-2280,"y":500,"width":560,"height":340,"color":"6"},
+		{"id":"b018479fed2a281e","type":"text","text":"Vbus","x":-1526,"y":310,"width":93,"height":60,"color":"5"},
+		{"id":"6f1f27a3f3551c8c","type":"text","text":"ia, ib","x":-1516,"y":640,"width":83,"height":60,"color":"5"}
+	],
+	"edges":[
+		{"id":"5456606ff6c695e9","fromNode":"0687882849a85092","fromSide":"bottom","toNode":"c3e7c218d2ef1b7d","toSide":"top"},
+		{"id":"bdf1fe6623715bc4","fromNode":"c3e7c218d2ef1b7d","fromSide":"bottom","toNode":"377f7d83feb01665","toSide":"top"},
+		{"id":"763f6e255afc46e3","fromNode":"377f7d83feb01665","fromSide":"bottom","toNode":"7fc9afbf468d8e97","toSide":"top"},
+		{"id":"d33322d422038e61","fromNode":"7fc9afbf468d8e97","fromSide":"bottom","toNode":"01a66b272b01f6db","toSide":"top"},
+		{"id":"41c475ccea9cd76a","fromNode":"caf82b11e022ecce","fromSide":"left","toNode":"0687882849a85092","toSide":"right"},
+		{"id":"2dbc47b589b020b4","fromNode":"f4ee1cad05f79a9f","fromSide":"left","toNode":"377f7d83feb01665","toSide":"right"},
+		{"id":"2ec03a559dfa5eec","fromNode":"caf82b11e022ecce","fromSide":"left","toNode":"c3e7c218d2ef1b7d","toSide":"right"},
+		{"id":"d70f2a5edb05c014","fromNode":"377f7d83feb01665","fromSide":"bottom","toNode":"bce5410ff7ef681c","toSide":"top"},
+		{"id":"6f5cf5c88afbf98d","fromNode":"0687882849a85092","fromSide":"bottom","toNode":"b046225e72504d0b","toSide":"top"},
+		{"id":"19cf303bd06c6f63","fromNode":"b046225e72504d0b","fromSide":"bottom","toNode":"accb31332ccddde8","toSide":"top"},
+		{"id":"22d4f6cd5e31ffc2","fromNode":"bce5410ff7ef681c","fromSide":"bottom","toNode":"accb31332ccddde8","toSide":"top"},
+		{"id":"29415905c2567c53","fromNode":"b018479fed2a281e","fromSide":"right","toNode":"accb31332ccddde8","toSide":"left"},
+		{"id":"c7d89bc73ec1e7ff","fromNode":"6f1f27a3f3551c8c","fromSide":"right","toNode":"accb31332ccddde8","toSide":"left"},
+		{"id":"41a11c63922ba0eb","fromNode":"01a66b272b01f6db","fromSide":"bottom","toNode":"980382ef65487c8b","toSide":"top"},
+		{"id":"65fe5c3bce525cbe","fromNode":"c41cbf27c768f7f8","fromSide":"right","toNode":"b018479fed2a281e","toSide":"left"},
+		{"id":"9ac64d06a7f79102","fromNode":"c41cbf27c768f7f8","fromSide":"right","toNode":"6f1f27a3f3551c8c","toSide":"left"},
+		{"id":"35c1b64ab2a00d5e","fromNode":"ae326d53465898e2","fromSide":"top","toNode":"caf82b11e022ecce","toSide":"right"},
+		{"id":"498a2bee8e8c9884","fromNode":"ae326d53465898e2","fromSide":"top","toNode":"f4ee1cad05f79a9f","toSide":"right"},
+		{"id":"980aa13e3404e7ee","fromNode":"f3c25611c08dffef","fromSide":"top","toNode":"ae326d53465898e2","toSide":"right"}
+	]
+}

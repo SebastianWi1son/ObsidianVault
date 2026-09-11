@@ -1,0 +1,13 @@
+# Obsidian 运行时状态（多设备下必冲突，不要入库）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+
+# Obsidian 回收站
+.trash/
+
+# 系统垃圾
+.DS_Store
+Thumbs.db
+*.tmp
+*~

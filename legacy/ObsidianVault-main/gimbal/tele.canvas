@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"4d8dcdf7ea21bbf2","x":-179,"y":-116,"width":400,"height":400,"type":"file","file":"gimbal/tele & param/RX (tele cmd).canvas"},
+		{"id":"6212366737521cbf","x":280,"y":-116,"width":400,"height":400,"type":"file","file":"gimbal/tele & param/TX (tele display).canvas"}
+	],
+	"edges":[]
+}

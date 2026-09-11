@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"f9593bea49e5627a","type":"file","file":"gimbal/tele & param/HAL_UART_TxEventCallBack(huartx, size).md","x":-160,"y":-40,"width":620,"height":60,"color":"5"},
+		{"id":"34d0648f889c20d3","type":"file","file":"gimbal/tele & param/justfloat_rx_feed.md","x":-160,"y":-360,"width":620,"height":193,"color":"6"},
+		{"id":"a00ca0fe373a0399","type":"file","file":"gimbal/tele & param/tele_parse_command().md","x":-160,"y":-1000,"width":620,"height":240,"color":"6"},
+		{"id":"6b97b101e8b7ee98","type":"file","file":"gimbal/tele & param/tele_command_process_buffer().md","x":-160,"y":-660,"width":620,"height":132,"color":"6"},
+		{"id":"ae11bf5cc0c64a7b","type":"file","file":"gimbal/tele & param/dispatch.md","x":200,"y":-1560,"width":620,"height":160,"color":"6"},
+		{"id":"f9b9128fc785ffbc","type":"text","text":"PARAM","x":200,"y":-1180,"width":250,"height":60,"color":"1"},
+		{"id":"5d4d42ff2d1d4981","type":"text","text":"ACTION","x":-160,"y":-1180,"width":250,"height":60,"color":"1"},
+		{"id":"e9ba40727726fb84","type":"file","file":"gimbal/tele & param/dispatch_action.md","x":-310,"y":-1680,"width":460,"height":380,"color":"6"}
+	],
+	"edges":[
+		{"id":"99f2a5bc0dd00b8c","fromNode":"f9b9128fc785ffbc","fromSide":"top","toNode":"ae11bf5cc0c64a7b","toSide":"bottom"},
+		{"id":"6d2682d02341114e","fromNode":"a00ca0fe373a0399","fromSide":"top","toNode":"5d4d42ff2d1d4981","toSide":"bottom"},
+		{"id":"e249c59f50f5b2c4","fromNode":"a00ca0fe373a0399","fromSide":"top","toNode":"f9b9128fc785ffbc","toSide":"bottom"},
+		{"id":"922c13810aa56e9a","fromNode":"5d4d42ff2d1d4981","fromSide":"top","toNode":"e9ba40727726fb84","toSide":"bottom"},
+		{"id":"21fad5cb0aa03e39","fromNode":"f9593bea49e5627a","fromSide":"top","toNode":"34d0648f889c20d3","toSide":"bottom"},
+		{"id":"5137fffe520004a2","fromNode":"34d0648f889c20d3","fromSide":"top","toNode":"6b97b101e8b7ee98","toSide":"bottom"},
+		{"id":"da663aaa8847f4e0","fromNode":"6b97b101e8b7ee98","fromSide":"top","toNode":"a00ca0fe373a0399","toSide":"bottom"}
+	]
+}

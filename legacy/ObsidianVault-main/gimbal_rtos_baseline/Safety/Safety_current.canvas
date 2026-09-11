@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"fast","type":"text","text":"TIM2 ISR fast checks\novercurrent / overspeed","x":-700,"y":-220,"width":270,"height":120},
+		{"id":"slow","type":"text","text":"AppTask slow checks\nencoder / VBUS / limits / jump","x":-700,"y":80,"width":290,"height":140},
+		{"id":"stop","type":"text","text":"app_safety_emergency_stop\nfirst fault wins","x":-240,"y":-80,"width":300,"height":130},
+		{"id":"latch","type":"file","file":"gimbal_rtos_baseline/Safety/fault_latch_clear.md","x":180,"y":-100,"width":300,"height":170},
+		{"id":"tele","type":"text","text":"error_report + fault history\ndiag_page 1/2/3","x":600,"y":-220,"width":280,"height":130},
+		{"id":"pwm","type":"text","text":"PWM zero\ncontrol flag stop\nHAL motor disable","x":600,"y":60,"width":280,"height":140},
+		{"id":"62145962669c8273","x":80,"y":150,"width":250,"height":60,"type":"text","text":""},
+		{"id":"future","type":"file","file":"gimbal_rtos_baseline/Safety/safety_coverage.md","x":-40,"y":380,"width":330,"height":170}
+	],
+	"edges":[
+		{"id":"a","fromNode":"fast","fromSide":"right","toNode":"stop","toSide":"left"},
+		{"id":"b","fromNode":"slow","fromSide":"right","toNode":"stop","toSide":"left"},
+		{"id":"c","fromNode":"stop","fromSide":"right","toNode":"latch","toSide":"left"},
+		{"id":"d","fromNode":"latch","fromSide":"right","toNode":"tele","toSide":"left"},
+		{"id":"e","fromNode":"latch","fromSide":"right","toNode":"pwm","toSide":"left"},
+		{"id":"f","fromNode":"future","fromSide":"left","toNode":"slow","toSide":"right","label":"coverage expansion"}
+	]
+}

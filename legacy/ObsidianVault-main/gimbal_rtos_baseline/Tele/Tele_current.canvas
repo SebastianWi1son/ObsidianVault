@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"rx","type":"file","file":"Tele/RX_command.canvas","x":-650,"y":-120,"width":330,"height":220},
+		{"id":"tx","type":"file","file":"Tele/TX_snapshot.canvas","x":450,"y":-120,"width":330,"height":220},
+		{"id":"cmd","type":"text","text":"stable pending command buffer\n单条命令所有权","x":-160,"y":-160,"width":300,"height":120},
+		{"id":"runtime","type":"text","text":"motor / safety / diagnostics\nruntime state","x":-120,"y":100,"width":300,"height":150},
+		{"id":"gap","type":"file","file":"Tele/tele_gaps.md","x":360,"y":240,"width":300,"height":150}
+	],
+	"edges":[
+		{"id":"a","fromNode":"rx","toNode":"cmd","label":"ISR copies","fromSide":"right","toSide":"left"},
+		{"id":"b","fromNode":"cmd","toNode":"runtime","label":"CommTask dispatch","fromSide":"bottom","toSide":"top"},
+		{"id":"c","fromNode":"runtime","toNode":"tx","label":"TeleTask snapshot","fromSide":"right","toSide":"left"},
+		{"id":"d","fromNode":"tx","toNode":"gap","label":"future return semantics","fromSide":"bottom","toSide":"top"}
+	]
+}

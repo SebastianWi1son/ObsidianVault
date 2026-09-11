@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"c93457cdcddbfba1","type":"file","file":"gimbal/tele & param/tele_snapshot_collect.md","x":-200,"y":-30,"width":460,"height":170,"color":"6"},
+		{"id":"5360b62e3ca38d59","type":"file","file":"gimbal/tele & param/TELE_SNAPSHOT_FIELD.md","x":-200,"y":280,"width":460,"height":100,"color":"6"},
+		{"id":"2af94d6b08e2ba69","type":"file","file":"gimbal/tele & param/tele_frame_fill.md","x":-200,"y":480,"width":460,"height":120,"color":"6"},
+		{"id":"9d4c99654d1f4c31","type":"file","file":"gimbal/tele & param/justfloat_send.md","x":-200,"y":720,"width":460,"height":191,"color":"6"}
+	],
+	"edges":[
+		{"id":"f43ad64d3017768f","fromNode":"c93457cdcddbfba1","fromSide":"bottom","toNode":"5360b62e3ca38d59","toSide":"top"},
+		{"id":"4214d0499cdd0e08","fromNode":"5360b62e3ca38d59","fromSide":"bottom","toNode":"2af94d6b08e2ba69","toSide":"top"},
+		{"id":"84a8dd6f4997e840","fromNode":"2af94d6b08e2ba69","fromSide":"bottom","toNode":"9d4c99654d1f4c31","toSide":"top"}
+	]
+}

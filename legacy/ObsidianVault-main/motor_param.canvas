@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"3a135cd7bfd01e87","type":"file","file":"Setter + 范围校验.md","x":-460,"y":-180,"width":400,"height":400,"color":"6"},
+		{"id":"44a61adb982677dd","x":580,"y":-180,"width":400,"height":400,"color":"6","type":"file","file":"Bounds { min, max, name}.md"},
+		{"id":"b3a248ba1029f403","type":"file","file":"Getter Read Only.md","x":40,"y":-180,"width":400,"height":400,"color":"6"},
+		{"id":"4453c30c2423fc9a","x":-460,"y":400,"width":1440,"height":400,"color":"6","type":"file","file":"Snapshot - roll back Rest.md"}
+	],
+	"edges":[],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
+}

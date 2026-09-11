@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"tim","type":"text","text":"TIM2 ISR / 1 kHz\nFOC + fast safety\n唯一 control owner","x":-720,"y":-220,"width":280,"height":140},
+		{"id":"sensor","type":"text","text":"SensorTask / 1 ms\nencoder bus + recovery\nproduce cached angle","x":-300,"y":-220,"width":280,"height":150},
+		{"id":"comm","type":"text","text":"CommTask / 1 ms\nconsume + dispatch commands","x":120,"y":-220,"width":280,"height":120},
+		{"id":"tele","type":"text","text":"TeleTask / 10 ms\nsnapshot + frame + DMA TX","x":540,"y":-220,"width":280,"height":130},
+		{"id":"app","type":"text","text":"AppTask\nslow safety + ADC/VBUS","x":-90,"y":100,"width":280,"height":120},
+		{"id":"diag","type":"file","file":"gimbal_rtos_baseline/FreeRTOS/rtos_diagnostics.md","x":360,"y":100,"width":300,"height":150},
+		{"id":"future","type":"file","file":"gimbal_rtos_baseline/FreeRTOS/iwdg_future.md","x":-520,"y":120,"width":300,"height":150}
+	],
+	"edges":[
+		{"id":"a","fromNode":"sensor","fromSide":"left","toNode":"tim","toSide":"right","label":"cached data"},
+		{"id":"b","fromNode":"comm","fromSide":"left","toNode":"tim","toSide":"right","label":"requested state"},
+		{"id":"c","fromNode":"tim","fromSide":"right","toNode":"tele","toSide":"left","label":"shared-read state"},
+		{"id":"d","fromNode":"app","fromSide":"top","toNode":"tim","toSide":"right","label":"fault latch"},
+		{"id":"e","fromNode":"tim","fromSide":"right","toNode":"diag","toSide":"left"},
+		{"id":"f","fromNode":"sensor","fromSide":"right","toNode":"diag","toSide":"left"},
+		{"id":"g","fromNode":"comm","fromSide":"bottom","toNode":"diag","toSide":"top"},
+		{"id":"h","fromNode":"tele","fromSide":"bottom","toNode":"diag","toSide":"top"},
+		{"id":"i","fromNode":"app","fromSide":"right","toNode":"diag","toSide":"left"},
+		{"id":"j","fromNode":"diag","fromSide":"left","toNode":"future","toSide":"right","label":"health decision prerequisite"}
+	]
+}
