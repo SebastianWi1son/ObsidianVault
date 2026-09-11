@@ -1,0 +1,22 @@
+{
+  "commitMessage": "vault backup: {{date}}",
+  "autoCommitMessage": "vault backup: {{date}}",
+  "commitMessageScript": "",
+  "autoSaveInterval": 10,
+  "autoPushInterval": 10,
+  "autoPullInterval": 0,
+  "autoPullOnBoot": true,
+  "disablePush": false,
+  "pullBeforePush": true,
+  "disablePopups": true,
+  "showStatusBar": true,
+  "showBranchStatusBar": true,
+  "changedFilesInStatusBar": false,
+  "listChangedFilesInMessageBody": false,
+  "syncMethod": "merge",
+  "gitPath": "/usr/bin/git",
+  "refreshSourceControl": true,
+  "showFileMenu": true,
+  "differentIntervalCommitAndPush": false,
+  "submoduleRecurseCheckout": false
+}
