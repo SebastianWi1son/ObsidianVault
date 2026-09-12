@@ -23,6 +23,27 @@
 			"width":260,
 			"height":60
 		},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":120,"y":-140,"width":420,"height":240},
+		{
+			"id":"c8ed22d427286442",
+			"type":"text",
+			"text":"gyro_ (w_x, w_y, w_z)",
+			"styleAttributes":{},
+			"x":200,
+			"y":220,
+			"width":260,
+			"height":60
+		},
+		{
+			"id":"d806a518218b05f2",
+			"type":"text",
+			"text":"q_k+1 = q_k ⊗ (q_dot * dt)",
+			"styleAttributes":{},
+			"x":1440,
+			"y":520,
+			"width":320,
+			"height":60
+		},
 		{
 			"id":"160bfa696174e1d6",
 			"type":"text",
@@ -44,27 +65,6 @@
 			"height":60
 		},
 		{
-			"id":"58c03ca2b18cb5de",
-			"type":"text",
-			"text":"q_dot = 1/2 * q hamilto (0,w)",
-			"styleAttributes":{},
-			"x":1080,
-			"y":640,
-			"width":260,
-			"height":60
-		},
-		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":120,"y":-140,"width":420,"height":240},
-		{
-			"id":"d806a518218b05f2",
-			"type":"text",
-			"text":"q_k+1 = normalize(q_k + q_dot * dt)",
-			"styleAttributes":{},
-			"x":1460,
-			"y":640,
-			"width":260,
-			"height":60
-		},
-		{
 			"id":"1fded3dc9b0e249b",
 			"type":"text",
 			"text":"q_k+1",
@@ -75,12 +75,12 @@
 			"height":60
 		},
 		{
-			"id":"c8ed22d427286442",
+			"id":"58c03ca2b18cb5de",
 			"type":"text",
-			"text":"gyro_ (w_x, w_y, w_z)",
+			"text":"q_dot = 1/2 * q ⊗ (0,w)",
 			"styleAttributes":{},
-			"x":200,
-			"y":220,
+			"x":1060,
+			"y":520,
 			"width":260,
 			"height":60
 		}
@@ -94,15 +94,6 @@
 			"fromSide":"bottom",
 			"toNode":"c8ed22d427286442",
 			"toSide":"top"
-		},
-		{
-			"id":"13125ac043faaf46",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"c87d5d289c9d17e7",
-			"fromSide":"right",
-			"toNode":"1fded3dc9b0e249b",
-			"toSide":"left"
 		},
 		{
 			"id":"9d65b8dc42a389ea",
@@ -130,15 +121,6 @@
 			"fromSide":"bottom",
 			"toNode":"fab84e86718e769f",
 			"toSide":"top"
-		},
-		{
-			"id":"1e7e6201d3ae1dc6",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"fab84e86718e769f",
-			"fromSide":"right",
-			"toNode":"58c03ca2b18cb5de",
-			"toSide":"left"
 		},
 		{
 			"id":"ac99fc2a3782f76d",
