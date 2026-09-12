@@ -2,7 +2,7 @@ q_dot =  1/2 * q ⊗ (0, w1, w2, w3)
 q += q_dot * dt
 
 ```cpp
-math::Quat::intergrate(const Vec3<T>& omega, T dt) {
+math::Quat::integrate(const Vec3<T>& omega, T dt) {
 	T half = T(0.5) * dt;
     T wx = omega.x_, wy = omega.y_, wz = omega.z_;
     // q_dot =  1/2 * q ⊗ (0, w1, w2, w3)

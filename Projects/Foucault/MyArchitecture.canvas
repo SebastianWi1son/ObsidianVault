@@ -15,52 +15,7 @@
 			"height":60,
 			"color":"2"
 		},
-		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-140,"y":-220,"width":420,"height":240,"color":"4"},
-		{
-			"id":"c8ed22d427286442",
-			"type":"text",
-			"text":"gyro_ (w_x, w_y, w_z)",
-			"styleAttributes":{},
-			"x":-60,
-			"y":180,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
 		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":900,"y":510,"width":740,"height":480},
-		{
-			"id":"58c03ca2b18cb5de",
-			"type":"text",
-			"text":"q_dot = 1/2 * q ⊗ (0,w)",
-			"styleAttributes":{},
-			"x":940,
-			"y":410,
-			"width":260,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"d806a518218b05f2",
-			"type":"text",
-			"text":"q_k+1 = q_k ⊗ (q_dot * dt)",
-			"styleAttributes":{},
-			"x":1300,
-			"y":410,
-			"width":320,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"1fded3dc9b0e249b",
-			"type":"text",
-			"text":"q_ (q_k+1)",
-			"styleAttributes":{},
-			"x":1880,
-			"y":680,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
 		{
 			"id":"ae52b165476b2caa",
 			"type":"text",
@@ -82,27 +37,98 @@
 			"width":260,
 			"height":60,
 			"color":"2"
+		},
+		{
+			"id":"58c03ca2b18cb5de",
+			"type":"text",
+			"text":"q_dot = 1/2 * q ⊗ (0,w)",
+			"styleAttributes":{},
+			"x":940,
+			"y":410,
+			"width":260,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"d806a518218b05f2",
+			"type":"text",
+			"text":"q_k+1 = q_k ⊗ (1, ½·ω·dt)",
+			"styleAttributes":{},
+			"x":1300,
+			"y":410,
+			"width":320,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"c8ed22d427286442",
+			"type":"text",
+			"text":"gyro_ (w_x, w_y, w_z)",
+			"styleAttributes":{},
+			"x":-700,
+			"y":671,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"1fded3dc9b0e249b",
+			"type":"text",
+			"text":"q_ (q_k+1)",
+			"styleAttributes":{},
+			"x":1160,
+			"y":1300,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"4562412b92cfdb46",
+			"type":"text",
+			"text":"v = q_.conjugated().rotate(g_world);",
+			"styleAttributes":{},
+			"x":340,
+			"y":1780,
+			"width":420,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"3511a8d02caa8d17",
+			"type":"text",
+			"text":"acc_(a_x, a_y, a_z)",
+			"styleAttributes":{},
+			"x":-700,
+			"y":1780,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-780,"y":1300,"width":420,"height":240,"color":"4"},
+		{
+			"id":"64ef86e90c06b30b",
+			"type":"text",
+			"text":"error",
+			"styleAttributes":{},
+			"x":-220,
+			"y":1540,
+			"width":260,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"8d063fab45c399e2",
+			"type":"text",
+			"text":"a.cross(v);",
+			"styleAttributes":{},
+			"x":-220,
+			"y":1780,
+			"width":260,
+			"height":60,
+			"color":"6"
 		}
 	],
 	"edges":[
-		{
-			"id":"09db35bc085a838a",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"1643ba5dd71e15bb",
-			"fromSide":"bottom",
-			"toNode":"c8ed22d427286442",
-			"toSide":"top"
-		},
-		{
-			"id":"f129f238742e4748",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"c8ed22d427286442",
-			"fromSide":"bottom",
-			"toNode":"0b904532131ebb10",
-			"toSide":"top"
-		},
 		{
 			"id":"09b4ca35c55ae1e3",
 			"styleAttributes":{},
@@ -110,15 +136,6 @@
 			"fromNode":"58c03ca2b18cb5de",
 			"fromSide":"right",
 			"toNode":"d806a518218b05f2",
-			"toSide":"left"
-		},
-		{
-			"id":"35fe00c933049486",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"c87d5d289c9d17e7",
-			"fromSide":"right",
-			"toNode":"1fded3dc9b0e249b",
 			"toSide":"left"
 		},
 		{
@@ -156,6 +173,98 @@
 			"fromSide":"top",
 			"toNode":"0b904532131ebb10",
 			"toSide":"bottom"
+		},
+		{
+			"id":"96c4b89ba07589f3",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"c8ed22d427286442",
+			"fromSide":"right",
+			"toNode":"0b904532131ebb10",
+			"toSide":"left"
+		},
+		{
+			"id":"7e729cdaa6627f10",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1643ba5dd71e15bb",
+			"fromSide":"bottom",
+			"toNode":"3511a8d02caa8d17",
+			"toSide":"top"
+		},
+		{
+			"id":"1194ce0683e23980",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"c87d5d289c9d17e7",
+			"fromSide":"bottom",
+			"toNode":"1fded3dc9b0e249b",
+			"toSide":"top"
+		},
+		{
+			"id":"5045cdb7beee22a7",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1fded3dc9b0e249b",
+			"fromSide":"bottom",
+			"toNode":"4562412b92cfdb46",
+			"toSide":"right"
+		},
+		{
+			"id":"305fee2387bd7a25",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1643ba5dd71e15bb",
+			"fromSide":"top",
+			"toNode":"c8ed22d427286442",
+			"toSide":"bottom"
+		},
+		{
+			"id":"f971bded251535fa",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"3511a8d02caa8d17",
+			"fromSide":"right",
+			"toNode":"8d063fab45c399e2",
+			"toSide":"left"
+		},
+		{
+			"id":"f1161ebae0073b81",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"4562412b92cfdb46",
+			"fromSide":"left",
+			"toNode":"8d063fab45c399e2",
+			"toSide":"right"
+		},
+		{
+			"id":"18316e0b6b1e0e13",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"8d063fab45c399e2",
+			"fromSide":"top",
+			"toNode":"64ef86e90c06b30b",
+			"toSide":"bottom"
+		},
+		{
+			"id":"24b4fd4544d3eb40",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"64ef86e90c06b30b",
+			"fromSide":"top",
+			"toNode":"ae52b165476b2caa",
+			"toSide":"bottom",
+			"label":"="
+		},
+		{
+			"id":"6b3d857ebf250355",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"64ef86e90c06b30b",
+			"fromSide":"right",
+			"toNode":"160bfa696174e1d6",
+			"toSide":"bottom",
+			"label":"integral"
 		}
 	],
 	"metadata":{
