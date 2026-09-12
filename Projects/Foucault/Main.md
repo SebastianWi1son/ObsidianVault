@@ -11,8 +11,7 @@
 
 
 ## 2. 代码实现与理论的差异
-
-### 2.1 外推predict
+### 2.1 外推
 1. **理论:** 通过在旧姿态值叠加此刻q_dot, 获得新值q_k+1
 ```
 q_k + q_dot ---> q_k+1
@@ -20,9 +19,33 @@ q_k + q_dot ---> q_k+1
 
 2. **代码实现:** 
 ```cpp
-math::Quat::intergrate() {
-	
+math::Quat::intergrate(const Vec3<T>& omega, T dt) {
+	T half = T(0.5) * dt;
+    T wx = omega.x_, wy = omega.y_, wz = omega.z_;
+    // q_dot =  1/2 * q ⊗ (0, w1, w2, w3)
+    // q += q_dot
+    T q0 = q0_ + (-q1_ * wx - q2_ * wy - q3_ * wz) * half;
+    T q1 = q1_ + ( q0_ * wx + q2_ * wz - q3_ * wy) * half;
+    T q2 = q2_ + ( q0_ * wy - q1_ * wz + q3_ * wx) * half;
+    T q3 = q3_ + ( q0_ * wz + q1_ * wy - q2_ * wx) * half;
+
+    q0_ = q0; q1_ = q1; q2_ = q2; q3_ = q3;
+    return normalize();
 }
 ```
 - 没有q_dot
 - 没有两个时刻的q_k, q_k+1, 只有一个q自我更新
+
+### 2.2 为何要归一化
+```
+
+```
+> **一阶近似**使 结果四元数**模长大于1**
+> 而**只有单位四元数才可以表示旋转**
+
+## 3. replay
+### 3.1 predict与observe顺序问题
+真实项目中推荐使用: predict在前，observe在后
+实际回放replay样本中: observe在前，predict在后
+
+
