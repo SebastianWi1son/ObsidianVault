@@ -16,7 +16,7 @@
 		{"id":"n_ext","type":"text","text":"**⑨ 外部航向真相源　⚠️ 预留**\n\n【物理】里程计 / 云台编码器 / 磁力计 / 视觉\n　（6 轴下 yaw 不可观，绝对航向只能靠外部）\n【数学】z = R(q̂)ᵀ·v_ref\n【代码】⚠️ 未实现：`Estimator::observe_yaw` 是空函数体 · estimator.hpp:20\n※ 现在调用它会被**静默忽略**，没有标志告诉调用方注入失败\n※ 产品配置：里程计确定有 / 视觉待定 / 磁力计大概率没有","x":-1100,"y":600,"width":480,"height":320,"color":"1"}
 	],
 	"edges":[
-		{"id":"e_gyro_to_omega","fromNode":"n_gyro","fromSide":"right","toNode":"n_omega_c","toSide":"left","label":"ω_meas（机体系 rad/s）"},
+		{"id":"e_gyro_to_omega","toFloating":false,"fromNode":"n_gyro","fromSide":"right","toNode":"n_omega_c","toSide":"left","label":"ω_meas（机体系 rad/s）"},
 		{"id":"e_omega_to_integrate","fromNode":"n_omega_c","fromSide":"right","toNode":"n_integrate","toSide":"left","label":"ω_c（修正后的角速度）"},
 		{"id":"e_integrate_to_q","fromNode":"n_integrate","fromSide":"right","toNode":"n_q_hat","toSide":"left","label":"q_{k+1}（已归一化）"},
 		{"id":"e_q_to_integrate","fromFloating":false,"fromNode":"n_q_hat","fromSide":"top","toNode":"n_integrate","toSide":"top","label":"q_k（积分的左乘因子）"},
