@@ -27,12 +27,16 @@ q1 ⊗ q2
 PS: **叠加旋转获得姿态**是一种**手段**
 Extend: q, -q表示**同一个旋转**
 
-## 1.3 Mahony与EKF差异
+### 1.3 Mahony与EKF差异
 1. Mahony修正correct在角速度omega, 与外推predict操作耦合
 ```cpp
 estimator<Mahony>::predict 耦合外推+修正
 ```
 2. EKF修正correct与predict外推解耦
+```cpp
+estimater::correct()
+estimater::predict()
+```
 
 ### 1.4 `cos(θ/2), û·sin(θ/2)` -> `(1, ½ω·dt)`
 前置公式知识:
@@ -116,7 +120,7 @@ Quat& normalize() {
 ### 2.3 estimater::predict (唯一改变q_的函数)
 1. 把量测修正 折进角速度 (消费correct)
 2. 用该角速度把姿态往前推dt秒(外推)
-注:
+注: [Mahony在该函数下存在约定式歧义](#1.3%20Mahony与EKF差异)
 
 ## 3. replay
 ### 3.1 意义
