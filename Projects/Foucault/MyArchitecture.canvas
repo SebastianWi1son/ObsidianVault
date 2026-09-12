@@ -1,19 +1,8 @@
 {
 	"nodes":[
-		{"id":"c83f4d99c7cb2738","type":"group","x":-80,"y":400,"width":2320,"height":600,"label":"Mahony::predict()"},
+		{"id":"c83f4d99c7cb2738","type":"group","x":-320,"y":320,"width":2060,"height":760,"label":"Mahony::predict()"},
 		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-920,"y":1200,"width":1200,"height":675,"label":"correct"},
-		{"id":"c87d5d289c9d17e7","type":"group","x":1000,"y":480,"width":800,"height":440,"label":"Quat::integrate()"},
-		{"id":"81f775e74dcf4ab1","type":"file","file":"integrate().md","x":1060,"y":620,"width":700,"height":260},
-		{
-			"id":"fab84e86718e769f",
-			"type":"text",
-			"text":"PI控制器",
-			"styleAttributes":{},
-			"x":200,
-			"y":640,
-			"width":260,
-			"height":60
-		},
+		{"id":"c87d5d289c9d17e7","type":"group","x":880,"y":370,"width":800,"height":660,"color":"6","label":"Quat::integrate()"},
 		{
 			"id":"ae52b165476b2caa",
 			"type":"text",
@@ -23,49 +12,6 @@
 			"y":1380,
 			"width":260,
 			"height":60
-		},
-		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":120,"y":-140,"width":420,"height":240},
-		{
-			"id":"c8ed22d427286442",
-			"type":"text",
-			"text":"gyro_ (w_x, w_y, w_z)",
-			"styleAttributes":{},
-			"x":200,
-			"y":220,
-			"width":260,
-			"height":60
-		},
-		{
-			"id":"d806a518218b05f2",
-			"type":"text",
-			"text":"q_k+1 = q_k ⊗ (q_dot * dt)",
-			"styleAttributes":{},
-			"x":1440,
-			"y":520,
-			"width":320,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"1fded3dc9b0e249b",
-			"type":"text",
-			"text":"q_k+1",
-			"styleAttributes":{},
-			"x":1940,
-			"y":670,
-			"width":260,
-			"height":60
-		},
-		{
-			"id":"58c03ca2b18cb5de",
-			"type":"text",
-			"text":"q_dot = 1/2 * q ⊗ (0,w)",
-			"styleAttributes":{},
-			"x":1060,
-			"y":520,
-			"width":260,
-			"height":60,
-			"color":"5"
 		},
 		{
 			"id":"160bfa696174e1d6",
@@ -86,6 +32,64 @@
 			"y":1600,
 			"width":260,
 			"height":60
+		},
+		{"id":"81f775e74dcf4ab1","type":"file","file":"integrate().md","x":900,"y":510,"width":740,"height":480},
+		{
+			"id":"58c03ca2b18cb5de",
+			"type":"text",
+			"text":"q_dot = 1/2 * q ⊗ (0,w)",
+			"styleAttributes":{},
+			"x":940,
+			"y":410,
+			"width":260,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"d806a518218b05f2",
+			"type":"text",
+			"text":"q_k+1 = q_k ⊗ (q_dot * dt)",
+			"styleAttributes":{},
+			"x":1300,
+			"y":410,
+			"width":320,
+			"height":60,
+			"color":"5"
+		},
+		{"id":"0b904532131ebb10","type":"file","file":"Mahony PI控制器.md","x":-260,"y":553,"width":660,"height":295,"color":"6"},
+		{
+			"id":"03867398abd66e85",
+			"type":"text",
+			"text":"omega_c",
+			"styleAttributes":{},
+			"x":500,
+			"y":671,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-140,"y":-220,"width":420,"height":240,"color":"4"},
+		{
+			"id":"c8ed22d427286442",
+			"type":"text",
+			"text":"gyro_ (w_x, w_y, w_z)",
+			"styleAttributes":{},
+			"x":-60,
+			"y":180,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"1fded3dc9b0e249b",
+			"type":"text",
+			"text":"q_ (q_k+1)",
+			"styleAttributes":{},
+			"x":1880,
+			"y":680,
+			"width":260,
+			"height":60,
+			"color":"1"
 		}
 	],
 	"edges":[
@@ -122,7 +126,7 @@
 			"toFloating":false,
 			"fromNode":"c8ed22d427286442",
 			"fromSide":"bottom",
-			"toNode":"fab84e86718e769f",
+			"toNode":"0b904532131ebb10",
 			"toSide":"top"
 		},
 		{
@@ -150,6 +154,33 @@
 			"fromNode":"58c03ca2b18cb5de",
 			"fromSide":"right",
 			"toNode":"d806a518218b05f2",
+			"toSide":"left"
+		},
+		{
+			"id":"35fe00c933049486",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"c87d5d289c9d17e7",
+			"fromSide":"right",
+			"toNode":"1fded3dc9b0e249b",
+			"toSide":"left"
+		},
+		{
+			"id":"88343767d34229f5",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"03867398abd66e85",
+			"fromSide":"right",
+			"toNode":"c87d5d289c9d17e7",
+			"toSide":"left"
+		},
+		{
+			"id":"c96debcee632a8e8",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"0b904532131ebb10",
+			"fromSide":"right",
+			"toNode":"03867398abd66e85",
 			"toSide":"left"
 		}
 	],

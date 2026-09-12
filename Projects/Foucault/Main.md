@@ -34,8 +34,8 @@ estimator<Mahony>::predict 耦合外推+修正
 ```
 2. EKF修正correct与predict外推解耦
 ```cpp
-estimater::correct()
-estimater::predict()
+estimator::correct()
+estimator::predict()
 ```
 
 ### 1.4 `cos(θ/2), û·sin(θ/2)` -> `(1, ½ω·dt)`
@@ -67,7 +67,7 @@ estimater::predict()
 ### 2.1 外推
 1. **理论:** 通过在旧姿态值叠加此刻q_dot, 获得新值q_k+1
 ```
-q_k + q_dot ---> q_k+1
+q_k + q_dot*dt ---> q_k+1
 ```
 
 2. **代码实现:** 
@@ -81,7 +81,7 @@ q_k + q_dot ---> q_k+1
 ```
 
 ```cpp
-math::Quat::intergrate(const Vec3<T>& omega, T dt) {
+math::Quat::integrate(const Vec3<T>& omega, T dt) {
 	T half = T(0.5) * dt;
     T wx = omega.x_, wy = omega.y_, wz = omega.z_;
     // q_dot =  1/2 * q ⊗ (0, w1, w2, w3)
@@ -117,7 +117,7 @@ Quat& normalize() {
 > **一阶近似**使 结果四元数**模长大于1**
 > 而**只有单位四元数才可以表示旋转/姿态**
 
-### 2.3 estimater::predict (唯一改变q_的函数)
+### 2.3 estimator::predict (唯一改变q_的函数)
 1. 把量测修正 折进角速度 (消费correct)
 2. 用该角速度把姿态往前推dt秒(外推)
 注: [Mahony在该函数下存在约定式歧义](#1.3%20Mahony与EKF差异)
@@ -139,7 +139,7 @@ Quat& normalize() {
    }
 4. RMSE = √(Σ误差² / 帧数)                ← "平均每帧差了几度"
 ```
-### 3.1 predict与observe顺序问题
+### 3.2 predict与observe顺序问题
 - 真实项目中推荐使用:      predict在前，observe在后
 - 实际回放replay样本中: observe在前，predict在后
 
