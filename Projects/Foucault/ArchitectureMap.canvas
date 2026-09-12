@@ -1,35 +1,275 @@
 {
 	"nodes":[
-		{"id":"n_note_loop","type":"text","text":"**注：为什么必须有「q̂ 回到 observe」这条边**\n\n加速度计本身**没有姿态信息**，它只给出一个方向。\n修正量是 `z − h(q̂)` =「实测方向」减「当前姿态预测的重力方向」。\n\n→ 没有 q̂，残差 e 根本算不出来\n→ 少了这条边，滤波器就退化成开环校正，会一直往错误的方向拉\n\n※ 这条边是上一版图最要紧的一处修正。","x":1100,"y":1425,"width":1220,"height":250},
-		{"id":"n_note_delay","type":"text","text":"**注：一拍延迟（图上没画）**\n\n⑤ observe 算出的残差存进 `e_last_`，要到**下一次** ③ predict 才被用上。\n\n· 只调 observe 不调 predict → 姿态永远不动\n· 回放/测试里 observe→predict 成对且顺序固定，就是这个原因\n· `Mahony::update()` 内部也是这个顺序（mahony.cpp:54-57）\n· 好处：predict 成本恒定、可按任意速率运行 —— 这是 F4「异步多速率」成立的前提\n　（陀螺 1kHz、加速度计 100Hz，两者互不等待）","x":-60,"y":1425,"width":1010,"height":250},
-		{"id":"n_integrate","type":"text","text":"**③ 积分 + 归一化**\n\n【物理】用角速度把姿态往前推 dt 秒，并拉回单位模长\n【数学】q̇ = ½·q_k⊗(0,ω_c)\n　→　q_{k+1} = normalize(q_k + q̇·dt)\n【代码】`Quat::integrate(omega,dt)` · quat.hpp:54-63\n※ 一阶欧拉与归一化在同一次调用里完成（:62 就是 normalize）\n※ 代码中没有独立的 q̇ 变量 —— 所以本图把两步写在同一个节点\n※ dt 单位：秒","x":840,"y":0,"width":460,"height":300,"color":"5"},
-		{"id":"n_q_hat","type":"text","text":"**④ 姿态状态 q̂**\n\n【物理】估算器的全部记忆（姿态）\n【数学】单位四元数 q̂；q̂ 把机体系向量转到世界系\n【代码】`Mahony::q_` · mahony.hpp:34\n※ 输出：`Mahony::euler()` → `to_euler()` · quat.hpp:78\n　（内旋 ZYX，返回 roll/pitch/yaw 弧度）\n※ d2 模式下这里应该是单轴 ψ —— 未实现，见左下「档位」","x":1660,"y":0,"width":430,"height":280,"color":"6"},
-		{"id":"n_observe","type":"text","text":"**⑤ observe（备料：不改 q̂）**\n\n【物理】用当前姿态把世界重力折算到机体系，与加速度计实测方向比出误差\n【数学】v = q̂*⊗(0,0,1)　　e = a × v\n【代码】`Mahony::observe(acc,dt)` · mahony.cpp:34-52\n※ ★ 它**不改变 q̂**：只算残差、攒积分、把 e 存进 `e_last_`\n※ 存下的 e 要到下一次 predict 才生效（一拍延迟，见底部注）","x":1595,"y":420,"width":560,"height":260,"color":"5"},
-		{"id":"n_e_int","type":"text","text":"**⑦ e_int_（= b̂ 零偏估计）**\n\n【物理】跨帧累积的残差 → 当成陀螺零偏来估；限幅防饱和\n【数学】e_int_ += e·dt　然后 clamp(±integral_limit_)\n【代码】mahony.cpp:43-48\n※ ★ 它自己是一条反馈回路（状态量跨帧累积），不是单次计算\n※ 对应本质公式里的 b̂（bias）","x":1625,"y":870,"width":500,"height":280,"color":"5"},
-		{"id":"n_frames","type":"text","text":"**坐标系与单位约定**（本项目唯一翻过车的地方）\n\n· 世界系 **z-up**：静止水平时 acc ≈ (0,0,1)\n· 数据集常为 z-down（NED）→ 只能在 host 边界取反，core 不动\n· gyro：**机体系** rad/s\n· acc：**机体系** 方向（用前 normalize）\n· dt：秒\n　⚠️ predict 的 dt = 积分步长\n　⚠️ observe 的 dt = 距上次 observe 的间隔\n　（两者语义不同，当前同频 50Hz 掩盖了这个区别）\n· 欧拉角：(roll, pitch, yaw) rad，内旋 ZYX\n\n※ 历史坑：复盘.md 2026-08-30 数据集 z-down 未适配 → roll RMSE 179°","x":-2240,"y":-420,"width":520,"height":420},
-		{"id":"n_legend","type":"text","text":"**图例与读法**\n\n【颜色】🟩 物理输入　🟦 数学·代码算子　🟪 状态　🟥 预留/未实现\n\n【三行式】每个节点固定三行：\n　物理（现象） → 数学（符号） → 代码（文件:行）\n\n【读法】主链从左到右：\n　gyro → ②ω_c → ③积分 → ④q̂ → ⑤observe → e → ⑥K·e → 回到 ②\n\n【代码边界】\n　②③⑤⑥⑦ → Mahony（core/solver/mahony.*）\n　①④　　 → 门面 + 状态（core/estimator.hpp · mahony.hpp）\n　⑧⑨　　 → 量测层（core/measure/measure.hpp）\n\n【闭环】⑤ 要用的 h(q̂) 正是 ④ 算出来的 —— 没有 q̂ 就没有残差（见右下注）","x":-1220,"y":-680,"width":520,"height":420},
-		{"id":"n_acc","type":"text","text":"**⑧ 加速度计读数**\n\n【物理】比力（静止水平时 ≈ (0,0,1)，机体系）\n【数学】a（用前先 normalize；本 core 假定世界系 z-up）\n【代码】`IMUSample::acc_` · measure.hpp:9\n　→ `Estimator::observe(s,dt)` · estimator.hpp:18\n※ 当前**无**模长门限 / 静止检测 —— 运动加速度会直接污染残差","x":2680,"y":420,"width":440,"height":260,"color":"4"},
-		{"id":"n_omega_c","type":"text","text":"**② 修正求和 → ω_c**\n\n【物理】把量测修正「折进」角速度\n【数学】ω_c = ω_meas + Kp·e_last_ + Ki·e_int_\n【代码】`Mahony::predict` 内 · mahony.cpp:27-29\n　（在 :25 的 `if (is_meas_)` 内）\n※ 本质公式 q̂̇ = ½q̂⊗(ω−b̂) + K·(z−h(q̂)) 里\n　`K·(z−h(q̂))` 的落点就是这里\n※ 没有量测时（is_meas_=false）不加修正 → 纯积分","x":-40,"y":10,"width":420,"height":270,"color":"5"},
-		{"id":"n_k_e","type":"text","text":"**⑥ K·e 修正项**\n\n【物理】比例项（当前误差）+ 积分项（零偏估计）\n【数学】Kp·e_last_ + Ki·e_int_\n【代码】参与 ② 的求和 · mahony.cpp:27-29\n※ Kp / Ki 来自 `MahonyConfig` · mahony.hpp:9-13\n　（默认值在 config.hpp:18-20）","x":-60,"y":415,"width":440,"height":260,"color":"5"},
-		{"id":"n_dim","type":"text","text":"**⚠️ 维度档位（预留占位）**\n\n【概念】d2 平面（只估 yaw ψ）／d25 平面+倾角／d3 全姿态\n【代码】`enum Dimension` · config.hpp:9-13\n　　`make_mahony_config` · config.hpp:15-22\n【现状】三档参数完全相同（config.hpp:16 是 `(void)dim`）\n　→ 现在传 d2 / d25 / d3 结果一模一样\n【落点】d2 会把 ④ 的状态从四元数换成单轴 ψ（计划：批次 5）","x":-770,"y":955,"width":520,"height":300,"color":"1"},
-		{"id":"n_gyro","type":"text","text":"**① 陀螺仪读数**\n\n【物理】绕机体三轴的角速度\n【数学】ω_meas　rad/s（机体系）\n【代码】`IMUSample::gyro_` · measure.hpp:10\n　→ `Estimator::predict(s,dt)` · estimator.hpp:17\n　→ `Mahony::predict(gyro,dt)` · mahony.cpp:23","x":-960,"y":-5,"width":380,"height":300,"color":"4"},
-		{"id":"n_ext","type":"text","text":"**⑨ 外部航向真相源　⚠️ 预留**\n\n【物理】里程计 / 云台编码器 / 磁力计 / 视觉\n　（6 轴下 yaw 不可观，绝对航向只能靠外部）\n【数学】z = R(q̂)ᵀ·v_ref\n【代码】⚠️ 未实现：`Estimator::observe_yaw` 是空函数体 · estimator.hpp:20\n※ 现在调用它会被**静默忽略**，没有标志告诉调用方注入失败\n※ 产品配置：里程计确定有 / 视觉待定 / 磁力计大概率没有","x":-1100,"y":600,"width":480,"height":320,"color":"1"}
+		{"id":"c83f4d99c7cb2738","type":"group","x":-320,"y":300,"width":2040,"height":780,"label":"Mahony::predict()"},
+		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-240,"y":1220,"width":1220,"height":686,"label":"Mahony::observe()"},
+		{"id":"c87d5d289c9d17e7","type":"group","x":880,"y":370,"width":800,"height":660,"color":"6","label":"Quat::integrate()"},
+		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-260,"y":553,"width":660,"height":295,"color":"6"},
+		{
+			"id":"03867398abd66e85",
+			"type":"text",
+			"text":"omega_c",
+			"styleAttributes":{},
+			"x":500,
+			"y":671,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":900,"y":510,"width":740,"height":480},
+		{
+			"id":"58c03ca2b18cb5de",
+			"type":"text",
+			"text":"q̇ = ½·q ⊗ (0,ω)",
+			"styleAttributes":{},
+			"x":940,
+			"y":410,
+			"width":260,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"d806a518218b05f2",
+			"type":"text",
+			"text":"q_k+1 = normalize( q_k + q̇·dt )",
+			"styleAttributes":{},
+			"x":1300,
+			"y":410,
+			"width":320,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"1fded3dc9b0e249b",
+			"type":"text",
+			"text":"q_ (q_k+1)",
+			"styleAttributes":{},
+			"x":1460,
+			"y":1480,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"c8ed22d427286442",
+			"type":"text",
+			"text":"gyro_ (w_x, w_y, w_z)",
+			"styleAttributes":{},
+			"x":-720,
+			"y":671,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"ae52b165476b2caa",
+			"type":"text",
+			"text":"e_last",
+			"styleAttributes":{},
+			"x":-60,
+			"y":1300,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"4562412b92cfdb46",
+			"type":"text",
+			"text":"v = q_.conjugated().rotate(g_world);",
+			"styleAttributes":{},
+			"x":500,
+			"y":1780,
+			"width":420,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"8d063fab45c399e2",
+			"type":"text",
+			"text":"a.cross(v);",
+			"styleAttributes":{},
+			"x":-60,
+			"y":1780,
+			"width":260,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"160bfa696174e1d6",
+			"type":"text",
+			"text":"e_int",
+			"styleAttributes":{},
+			"x":340,
+			"y":1300,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"64ef86e90c06b30b",
+			"type":"text",
+			"text":"error (e = â × v：模长 ≈ 误差角、方向 = 纠正转轴)",
+			"styleAttributes":{},
+			"x":-130,
+			"y":1520,
+			"width":400,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"3511a8d02caa8d17",
+			"type":"text",
+			"text":"acc_(a_x, a_y, a_z)",
+			"styleAttributes":{},
+			"x":-720,
+			"y":1780,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-800,"y":1300,"width":420,"height":240,"color":"4"}
 	],
 	"edges":[
-		{"id":"e_gyro_to_omega","toFloating":false,"fromNode":"n_gyro","fromSide":"right","toNode":"n_omega_c","toSide":"left","label":"ω_meas（机体系 rad/s）"},
-		{"id":"e_omega_to_integrate","fromNode":"n_omega_c","fromSide":"right","toNode":"n_integrate","toSide":"left","label":"ω_c（修正后的角速度）"},
-		{"id":"e_integrate_to_q","fromNode":"n_integrate","fromSide":"right","toNode":"n_q_hat","toSide":"left","label":"q_{k+1}（已归一化）"},
-		{"id":"e_q_to_integrate","fromFloating":false,"fromNode":"n_q_hat","fromSide":"top","toNode":"n_integrate","toSide":"top","label":"q_k（积分的左乘因子）"},
-		{"id":"e_q_to_observe","fromNode":"n_q_hat","fromSide":"bottom","toNode":"n_observe","toSide":"top","label":"q̂（算 h(q̂) 必需）★"},
-		{"id":"e_acc_to_observe","fromNode":"n_acc","fromSide":"left","toNode":"n_observe","toSide":"right","label":"a（observe 内先 normalize）"},
-		{"id":"e_observe_to_k_e","fromNode":"n_observe","fromSide":"left","toNode":"n_k_e","toSide":"right","label":"e = a × (q̂*⊗(0,0,1))"},
-		{"id":"e_observe_to_e_int","fromNode":"n_observe","fromSide":"bottom","toNode":"n_e_int","toSide":"top","label":"e 每帧累加（·dt，限幅）"},
-		{"id":"e_e_int_to_k_e","toFloating":false,"fromNode":"n_e_int","fromSide":"left","toNode":"n_k_e","toSide":"bottom","label":"Ki·e_int_（= b̂ 零偏估计）"},
-		{"id":"e_k_e_to_omega","fromNode":"n_k_e","fromSide":"top","toNode":"n_omega_c","toSide":"bottom","label":"Kp·e_last_ + Ki·e_int_"},
-		{"id":"e_ext_to_omega","fromNode":"n_ext","fromSide":"top","toNode":"n_omega_c","toSide":"bottom","color":"1","label":"预留：外部 yaw 修正（当前被静默忽略）"}
+		{
+			"id":"09b4ca35c55ae1e3",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"58c03ca2b18cb5de",
+			"fromSide":"right",
+			"toNode":"d806a518218b05f2",
+			"toSide":"left"
+		},
+		{
+			"id":"88343767d34229f5",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"03867398abd66e85",
+			"fromSide":"right",
+			"toNode":"c87d5d289c9d17e7",
+			"toSide":"left"
+		},
+		{
+			"id":"c96debcee632a8e8",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"0b904532131ebb10",
+			"fromSide":"right",
+			"toNode":"03867398abd66e85",
+			"toSide":"left"
+		},
+		{
+			"id":"caaa6702dcffed42",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"ae52b165476b2caa",
+			"fromSide":"top",
+			"toNode":"0b904532131ebb10",
+			"toSide":"bottom"
+		},
+		{
+			"id":"26666d4e5804eec6",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"160bfa696174e1d6",
+			"fromSide":"top",
+			"toNode":"0b904532131ebb10",
+			"toSide":"bottom"
+		},
+		{
+			"id":"96c4b89ba07589f3",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"c8ed22d427286442",
+			"fromSide":"right",
+			"toNode":"0b904532131ebb10",
+			"toSide":"left"
+		},
+		{
+			"id":"7e729cdaa6627f10",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1643ba5dd71e15bb",
+			"fromSide":"bottom",
+			"toNode":"3511a8d02caa8d17",
+			"toSide":"top"
+		},
+		{
+			"id":"5045cdb7beee22a7",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1fded3dc9b0e249b",
+			"fromSide":"bottom",
+			"toNode":"4562412b92cfdb46",
+			"toSide":"right"
+		},
+		{
+			"id":"305fee2387bd7a25",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1643ba5dd71e15bb",
+			"fromSide":"top",
+			"toNode":"c8ed22d427286442",
+			"toSide":"bottom"
+		},
+		{
+			"id":"f971bded251535fa",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"3511a8d02caa8d17",
+			"fromSide":"right",
+			"toNode":"8d063fab45c399e2",
+			"toSide":"left"
+		},
+		{
+			"id":"f1161ebae0073b81",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"4562412b92cfdb46",
+			"fromSide":"left",
+			"toNode":"8d063fab45c399e2",
+			"toSide":"right"
+		},
+		{
+			"id":"18316e0b6b1e0e13",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"8d063fab45c399e2",
+			"fromSide":"top",
+			"toNode":"64ef86e90c06b30b",
+			"toSide":"bottom"
+		},
+		{
+			"id":"24b4fd4544d3eb40",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"64ef86e90c06b30b",
+			"fromSide":"top",
+			"toNode":"ae52b165476b2caa",
+			"toSide":"bottom",
+			"label":"="
+		},
+		{
+			"id":"6b3d857ebf250355",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"64ef86e90c06b30b",
+			"fromSide":"right",
+			"toNode":"160bfa696174e1d6",
+			"toSide":"bottom",
+			"label":"integral"
+		},
+		{
+			"id":"bbce6ecb5c6a2934",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"c83f4d99c7cb2738",
+			"fromSide":"right",
+			"toNode":"1fded3dc9b0e249b",
+			"toSide":"right"
+		}
 	],
 	"metadata":{
 		"version":"1.0-1.0",
-		"frontmatter":{}
+		"frontmatter":{},
+		"startNode":"d86823a1b6953099"
 	}
 }
