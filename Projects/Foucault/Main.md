@@ -1,4 +1,6 @@
-> 输入量测流, 内部维护"上一时刻估计" + “算法特有状态”, 输出当前最优估计
+> 1. 输入量测流,
+> 2. 内部维护"上一时刻估计" + “算法特有状态”,
+> 3. 输出当前最优估计
 
 ## 1. concept
 ### 1.1 `旋转`和`姿态`在四元数等价
@@ -57,7 +59,7 @@ estimator<Mahony>::predict 耦合外推+修正
 > `û·sin(θ/2)` 里 `û` 是方向、`sin(θ/2)` 是长度
 > 而 `ω·dt` **本身就是"方向 û、长度 θ"**，所以可互换。
 
-## 2. 真实代码实现与li lu
+## 2. 真实代码实现 与 理论
 ### 2.1 外推
 1. **理论:** 通过在旧姿态值叠加此刻q_dot, 获得新值q_k+1
 ```
@@ -92,18 +94,49 @@ math::Quat::intergrate(const Vec3<T>& omega, T dt) {
 - 没有q_dot
 - 没有两个时刻的q_k, q_k+1, 只有一个q自我更新
 
-### 2.2 归一化
+### 2.2 归一化 (模长回一)
 
-```
-
+```cpp
+T norm_squared() const { return q0_ * q0_ + q1_ * q1_ + q2_ * q2_ + q3_ * q3_; }
+T norm() const { return std::sqrt(norm_squared()); }
+Quat& normalize() {
+    T n2 = norm_squared();
+    if (n2 > T(0)) {
+        T inv = inv_sqrt(n2);
+        q0_ *= inv; q1_ *= inv; q2_ *= inv; q3_ *= inv;
+    }
+    else { *this = identity(); }        // 零四元数无意义，复位为单位元
+    return *this;
+}
 ```
 原因在于[外推时q新叠加量的一阶近似](#1.4%20`cos(θ/2),%20û·sin(θ/2)`%20->%20`(1,%20½ω·dt)`)丢失了cos/sin高阶项
 > **一阶近似**使 结果四元数**模长大于1**
 > 而**只有单位四元数才可以表示旋转/姿态**
 
+### 2.3 estimater::predict (唯一改变q_的函数)
+1. 把量测修正 折进角速度 (消费correct)
+2. 用该角速度把姿态往前推dt秒(外推)
+注:
+
 ## 3. replay
+### 3.1 意义
+- **replay = 把录好的真实数据重新"播放"一遍喂给算法，然后对答案。**
+- **它解决什么**：核心算法在桌面上**没法接真实 IMU**
+- 用**别人录好的数据集**一长串 IMU 读数 **+** 每个时刻对应的真值姿态
+```
+1. load_dataset()   读文本 → 15999 行（acc3+gyro3+mag3+真值euler3）；50Hz → 320 秒
+2. Estimator<> est; est.reset(初始 yaw = 真值)   ← 使评估的是"相对漂移"而非初始偏差
+3. for (i = 0; i < 15999; i++) {          ★ 一帧一帧"播放"
+       IMUSample s = {-acc[i], gyro[i]};  ← 坐标系适配（z-down → z-up）
+       est.observe(s, 0.02f);             ← 备料
+       est.predict(s, 0.02f);             ← 推进一步
+       误差 = est.euler() - 真值[i];       ← ★ 对标准答案
+       累计 误差²                          ← 用平方让负数不抵消
+   }
+4. RMSE = √(Σ误差² / 帧数)                ← "平均每帧差了几度"
+```
 ### 3.1 predict与observe顺序问题
-真实项目中推荐使用: predict在前，observe在后
-实际回放replay样本中: observe在前，predict在后
+- 真实项目中推荐使用:      predict在前，observe在后
+- 实际回放replay样本中: observe在前，predict在后
 
 
