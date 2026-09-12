@@ -2,6 +2,7 @@
 	"nodes":[
 		{"id":"c83f4d99c7cb2738","type":"group","x":-320,"y":300,"width":2040,"height":780,"label":"Mahony::predict()"},
 		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-240,"y":1220,"width":1220,"height":686,"label":"Mahony::observe()"},
+		{"id":"170321f30d4c6c41","type":"group","x":-80,"y":2020,"width":1060,"height":580,"label":"observe_yaw"},
 		{"id":"c87d5d289c9d17e7","type":"group","x":880,"y":370,"width":800,"height":660,"color":"6","label":"Quat::integrate()"},
 		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-260,"y":553,"width":660,"height":295,"color":"6"},
 		{
