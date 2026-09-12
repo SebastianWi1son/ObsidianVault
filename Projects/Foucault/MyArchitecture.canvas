@@ -1,7 +1,7 @@
 {
 	"nodes":[
 		{"id":"c83f4d99c7cb2738","type":"group","x":-320,"y":320,"width":2060,"height":760,"label":"Mahony::predict()"},
-		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-320,"y":1220,"width":1200,"height":675,"label":"Mahony::observe()"},
+		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-240,"y":1220,"width":1220,"height":686,"label":"Mahony::observe()"},
 		{"id":"c87d5d289c9d17e7","type":"group","x":880,"y":370,"width":800,"height":660,"color":"6","label":"Quat::integrate()"},
 		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-260,"y":553,"width":660,"height":295,"color":"6"},
 		{
@@ -17,31 +17,9 @@
 		},
 		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":900,"y":510,"width":740,"height":480},
 		{
-			"id":"ae52b165476b2caa",
-			"type":"text",
-			"text":"e_last",
-			"styleAttributes":{},
-			"x":-220,
-			"y":1300,
-			"width":260,
-			"height":60,
-			"color":"2"
-		},
-		{
-			"id":"160bfa696174e1d6",
-			"type":"text",
-			"text":"e_int",
-			"styleAttributes":{},
-			"x":120,
-			"y":1300,
-			"width":260,
-			"height":60,
-			"color":"2"
-		},
-		{
 			"id":"58c03ca2b18cb5de",
 			"type":"text",
-			"text":"q_dot = 1/2 * q ⊗ (0,w)",
+			"text":"q̇ = ½·q ⊗ (0,ω)",
 			"styleAttributes":{},
 			"x":940,
 			"y":410,
@@ -52,7 +30,7 @@
 		{
 			"id":"d806a518218b05f2",
 			"type":"text",
-			"text":"q_k+1 = q_k ⊗ (1, ½·ω·dt)",
+			"text":"q_k+1 = normalize( q_k + q̇·dt )",
 			"styleAttributes":{},
 			"x":1300,
 			"y":410,
@@ -61,71 +39,93 @@
 			"color":"5"
 		},
 		{
-			"id":"c8ed22d427286442",
+			"id":"1fded3dc9b0e249b",
 			"type":"text",
-			"text":"gyro_ (w_x, w_y, w_z)",
+			"text":"q_ (q_k+1)",
 			"styleAttributes":{},
-			"x":-700,
-			"y":671,
+			"x":1460,
+			"y":1480,
 			"width":260,
 			"height":60,
 			"color":"1"
 		},
 		{
-			"id":"1fded3dc9b0e249b",
+			"id":"ae52b165476b2caa",
 			"type":"text",
-			"text":"q_ (q_k+1)",
+			"text":"e_last",
 			"styleAttributes":{},
-			"x":1160,
+			"x":-60,
 			"y":1300,
 			"width":260,
 			"height":60,
-			"color":"1"
+			"color":"2"
 		},
 		{
 			"id":"4562412b92cfdb46",
 			"type":"text",
 			"text":"v = q_.conjugated().rotate(g_world);",
 			"styleAttributes":{},
-			"x":340,
+			"x":500,
 			"y":1780,
 			"width":420,
 			"height":60,
 			"color":"6"
 		},
 		{
+			"id":"8d063fab45c399e2",
+			"type":"text",
+			"text":"a.cross(v);",
+			"styleAttributes":{},
+			"x":-60,
+			"y":1780,
+			"width":260,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"160bfa696174e1d6",
+			"type":"text",
+			"text":"e_int",
+			"styleAttributes":{},
+			"x":340,
+			"y":1300,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"64ef86e90c06b30b",
+			"type":"text",
+			"text":"error (e = â × v：模长 ≈ 误差角、方向 = 纠正转轴)",
+			"styleAttributes":{},
+			"x":-130,
+			"y":1520,
+			"width":400,
+			"height":60,
+			"color":"5"
+		},
+		{
 			"id":"3511a8d02caa8d17",
 			"type":"text",
 			"text":"acc_(a_x, a_y, a_z)",
 			"styleAttributes":{},
-			"x":-700,
+			"x":-720,
 			"y":1780,
 			"width":260,
 			"height":60,
 			"color":"1"
 		},
-		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-780,"y":1300,"width":420,"height":240,"color":"4"},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-800,"y":1300,"width":420,"height":240,"color":"4"},
 		{
-			"id":"64ef86e90c06b30b",
+			"id":"c8ed22d427286442",
 			"type":"text",
-			"text":"error",
+			"text":"gyro_ (w_x, w_y, w_z)",
 			"styleAttributes":{},
-			"x":-220,
-			"y":1540,
+			"x":-720,
+			"y":671,
 			"width":260,
 			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"8d063fab45c399e2",
-			"type":"text",
-			"text":"a.cross(v);",
-			"styleAttributes":{},
-			"x":-220,
-			"y":1780,
-			"width":260,
-			"height":60,
-			"color":"6"
+			"color":"1"
 		}
 	],
 	"edges":[
@@ -193,15 +193,6 @@
 			"toSide":"top"
 		},
 		{
-			"id":"1194ce0683e23980",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"c87d5d289c9d17e7",
-			"fromSide":"bottom",
-			"toNode":"1fded3dc9b0e249b",
-			"toSide":"top"
-		},
-		{
 			"id":"5045cdb7beee22a7",
 			"styleAttributes":{},
 			"toFloating":false,
@@ -265,6 +256,15 @@
 			"toNode":"160bfa696174e1d6",
 			"toSide":"bottom",
 			"label":"integral"
+		},
+		{
+			"id":"bbce6ecb5c6a2934",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"c83f4d99c7cb2738",
+			"fromSide":"right",
+			"toNode":"1fded3dc9b0e249b",
+			"toSide":"right"
 		}
 	],
 	"metadata":{
