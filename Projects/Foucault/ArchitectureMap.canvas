@@ -215,7 +215,7 @@
 			"height":60,
 			"color":"2"
 		},
-		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-280,"y":-146,"width":660,"height":295,"color":"6"}
+		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-480,"y":203,"width":660,"height":295,"color":"6"}
 	],
 	"edges":[
 		{
@@ -234,15 +234,6 @@
 			"fromNode":"03867398abd66e85",
 			"fromSide":"right",
 			"toNode":"c87d5d289c9d17e7",
-			"toSide":"left"
-		},
-		{
-			"id":"c96debcee632a8e8",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"0b904532131ebb10",
-			"fromSide":"right",
-			"toNode":"03867398abd66e85",
 			"toSide":"left"
 		},
 		{
@@ -346,6 +337,24 @@
 			"fromNode":"bf197f3acc7a412f",
 			"fromSide":"right",
 			"toNode":"66cdba5bb81c8f01",
+			"toSide":"left"
+		},
+		{
+			"id":"bc36a7244f5621ef",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"66cdba5bb81c8f01",
+			"fromSide":"right",
+			"toNode":"0b904532131ebb10",
+			"toSide":"left"
+		},
+		{
+			"id":"26ac3631fa23f4b4",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"59146558a1cd36c6",
+			"fromSide":"right",
+			"toNode":"2d57dbf0db4ba658",
 			"toSide":"left"
 		}
 	],
