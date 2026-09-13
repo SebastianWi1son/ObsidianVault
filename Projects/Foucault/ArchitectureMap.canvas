@@ -290,6 +290,61 @@
 			"width":420,
 			"height":60,
 			"color":"6"
+		},
+		{
+			"id":"64e89e41d3a72c19",
+			"type":"text",
+			"text":"增益k",
+			"styleAttributes":{},
+			"x":-1260,
+			"y":180,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"665832a076e10695",
+			"type":"text",
+			"text":"error_heading",
+			"styleAttributes":{},
+			"x":-1950,
+			"y":210,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"6a4b5691f931d088",
+			"type":"text",
+			"text":"math::Quat::to_euler()",
+			"styleAttributes":{},
+			"x":-1950,
+			"y":-320,
+			"width":260,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"1c325337e55f4170",
+			"type":"text",
+			"text":"只取psi",
+			"styleAttributes":{},
+			"x":-1950,
+			"y":-100,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"23df6324ff446f30",
+			"type":"text",
+			"text":"math::wrap_pi()",
+			"styleAttributes":{},
+			"x":-1600,
+			"y":210,
+			"width":260,
+			"height":60,
+			"color":"6"
 		}
 	],
 	"edges":[
@@ -483,6 +538,51 @@
 			"fromNode":"56c71b22c429fdea",
 			"fromSide":"right",
 			"toNode":"64db0c3d6a6ef7da",
+			"toSide":"left"
+		},
+		{
+			"id":"247037274079f803",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1fded3dc9b0e249b",
+			"fromSide":"bottom",
+			"toNode":"6a4b5691f931d088",
+			"toSide":"top"
+		},
+		{
+			"id":"62ecf105670fbd17",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"6a4b5691f931d088",
+			"fromSide":"bottom",
+			"toNode":"1c325337e55f4170",
+			"toSide":"top"
+		},
+		{
+			"id":"ffa96d6065da4617",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1c325337e55f4170",
+			"fromSide":"bottom",
+			"toNode":"665832a076e10695",
+			"toSide":"top"
+		},
+		{
+			"id":"e5691cc9cdc3d5d0",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"64db0c3d6a6ef7da",
+			"fromSide":"right",
+			"toNode":"665832a076e10695",
+			"toSide":"left"
+		},
+		{
+			"id":"00453c99251865e6",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"665832a076e10695",
+			"fromSide":"right",
+			"toNode":"23df6324ff446f30",
 			"toSide":"left"
 		}
 	],
