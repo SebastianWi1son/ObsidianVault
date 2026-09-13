@@ -39,17 +39,6 @@
 			"height":420
 		},
 		{
-			"id":"59146558a1cd36c6",
-			"type":"text",
-			"text":"is_heading_valid()",
-			"styleAttributes":{},
-			"x":-2040,
-			"y":440,
-			"width":180,
-			"height":60,
-			"color":"6"
-		},
-		{
 			"id":"17be67f767659b8e",
 			"type":"text",
 			"text":"打滑检测-->降权trust",
@@ -125,27 +114,6 @@
 			"width":340,
 			"height":60,
 			"color":"1"
-		},
-		{
-			"id":"8f73465ad670a5b8",
-			"type":"text",
-			"text":"fresh `Mahony::heading_age_`",
-			"styleAttributes":{},
-			"x":-3520,
-			"y":440,
-			"width":300,
-			"height":60,
-			"color":"1"
-		},
-		{
-			"id":"03ce5cfb1fca8a13",
-			"type":"text",
-			"text":"CODE\n```cpp\nvoid Mahony::observe_heading(float heading_ref, float trust) {\n    if (!is_heading_aligned_) {\n        float roll, pitch, psi;\n        q_.to_euler(roll, pitch, psi);\n        heading_offset_ = math::wrap_pi(psi - heading_ref);\n        is_heading_aligned_ = true;\n    }\n    heading_ref_ = heading_ref;\n    heading_trust_ = math::clamp(trust, 0.0f, 1.0f);\n    heading_age_ = 0.0f;            // heading_age_ 唯一清零口\n}\n```",
-			"styleAttributes":{},
-			"x":-4220,
-			"y":140,
-			"width":600,
-			"height":400
 		},
 		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-3640,"y":-1240,"width":420,"height":240,"color":"4"},
 		{
@@ -235,6 +203,82 @@
 			"width":260,
 			"height":60,
 			"color":"1"
+		},
+		{
+			"id":"a7905b76b1ce6edb",
+			"type":"text",
+			"text":"align_heading\n```cpp\nvoid Mahony::align_heading(float heading_ref) {\n    float roll, pitch, psi;\n    q_.to_euler(roll, pitch, psi);              // 初始化\n    heading_offset_ = math::wrap_pi(psi - heading_ref);\n    heading_ref_ = heading_ref;\n    is_heading_aligned_ = true;\n}\n```",
+			"styleAttributes":{},
+			"x":-4200,
+			"y":660,
+			"width":560,
+			"height":280,
+			"color":"6"
+		},
+		{
+			"id":"56c71b22c429fdea",
+			"type":"text",
+			"text":"external_heading_reference (一个yaw角度读数)",
+			"styleAttributes":{},
+			"x":-3680,
+			"y":1200,
+			"width":420,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"64db0c3d6a6ef7da",
+			"type":"text",
+			"text":"`heading_ref_`",
+			"styleAttributes":{},
+			"x":-3520,
+			"y":780,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"59146558a1cd36c6",
+			"type":"text",
+			"text":"is_heading_valid()",
+			"styleAttributes":{},
+			"x":-2040,
+			"y":270,
+			"width":180,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"c0591306d1c1472d",
+			"type":"text",
+			"text":"`heading_offset_`",
+			"styleAttributes":{},
+			"x":-3520,
+			"y":580,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"8f73465ad670a5b8",
+			"type":"text",
+			"text":"fresh `Mahony::heading_age_`",
+			"styleAttributes":{},
+			"x":-3520,
+			"y":270,
+			"width":300,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"03ce5cfb1fca8a13",
+			"type":"text",
+			"text":"CODE\n```cpp\nvoid Mahony::observe_heading(float heading_ref, float trust) {\n    // 首次自动兜底：忘了手动对齐时航向通道也能工作（否则会静默失效）\n    if (!is_heading_aligned_) { align_heading(heading_ref); }\n    heading_ref_ = heading_ref;     // ★ 必须：让本周期目标自洽（否则拿旧 ref 算残差 → 对齐瞬间跳变）\n    heading_trust_ = math::clamp(trust, 0.0f, 1.0f);\n    heading_age_ = 0.0f;            // heading_age_ 唯一清零口\n}\n```",
+			"styleAttributes":{},
+			"x":-4270,
+			"y":-80,
+			"width":880,
+			"height":300
 		}
 	],
 	"edges":[
@@ -402,6 +446,24 @@
 			"fromSide":"right",
 			"toNode":"59146558a1cd36c6",
 			"toSide":"left"
+		},
+		{
+			"id":"ca97de77b7974457",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"56c71b22c429fdea",
+			"fromSide":"top",
+			"toNode":"a7905b76b1ce6edb",
+			"toSide":"bottom"
+		},
+		{
+			"id":"266f5abda1e593b7",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"56c71b22c429fdea",
+			"fromSide":"top",
+			"toNode":"64db0c3d6a6ef7da",
+			"toSide":"bottom"
 		}
 	],
 	"metadata":{
