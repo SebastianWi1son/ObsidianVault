@@ -1,77 +1,11 @@
 {
 	"nodes":[
-		{"id":"c83f4d99c7cb2738","type":"group","x":-2800,"y":-400,"width":4480,"height":1121,"label":"Mahony::predict()"},
-		{"id":"6342b2567535b786","type":"group","x":-2120,"y":-1960,"width":1860,"height":1120,"label":"Untitled group"},
+		{"id":"c83f4d99c7cb2738","type":"group","x":-2920,"y":-2480,"width":4800,"height":3201,"label":"Mahony::predict()"},
+		{"id":"6342b2567535b786","type":"group","x":-2120,"y":-2480,"width":1640,"height":1120,"label":"Mahony::correction_acc()"},
+		{"id":"93c4b515fc669f03","type":"group","x":-2120,"y":-560,"width":1640,"height":1120,"label":"Mahony::correction_heading()"},
 		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-420,"y":1220,"width":1500,"height":844,"label":"Mahony::observe()"},
 		{"id":"170321f30d4c6c41","type":"group","x":-1600,"y":1220,"width":1120,"height":844,"label":"Mahony::observe_heading()"},
-		{"id":"c87d5d289c9d17e7","type":"group","x":840,"y":-169,"width":800,"height":689,"color":"6","label":"Quat::integrate()"},
-		{"id":"f233795e1543edf9","type":"group","x":-1820,"y":-280,"width":340,"height":780,"label":"Gating"},
-		{
-			"id":"8d063fab45c399e2",
-			"type":"text",
-			"text":"a.cross(v);",
-			"styleAttributes":{},
-			"x":-60,
-			"y":1930,
-			"width":260,
-			"height":60,
-			"color":"6"
-		},
-		{
-			"id":"4562412b92cfdb46",
-			"type":"text",
-			"text":"v = q_.conjugated().rotate(g_world);",
-			"styleAttributes":{},
-			"x":500,
-			"y":1930,
-			"width":420,
-			"height":60,
-			"color":"6"
-		},
-		{
-			"id":"64ef86e90c06b30b",
-			"type":"text",
-			"text":"error (e = â × v：模长 ≈ 误差角、方向 = 纠正转轴)",
-			"styleAttributes":{},
-			"x":-130,
-			"y":1670,
-			"width":400,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"160bfa696174e1d6",
-			"type":"text",
-			"text":"e_int",
-			"styleAttributes":{},
-			"x":400,
-			"y":1450,
-			"width":260,
-			"height":60,
-			"color":"2"
-		},
-		{
-			"id":"ae52b165476b2caa",
-			"type":"text",
-			"text":"e_last",
-			"styleAttributes":{},
-			"x":-60,
-			"y":1450,
-			"width":260,
-			"height":60,
-			"color":"2"
-		},
-		{
-			"id":"a783dddb34fcc2df",
-			"type":"text",
-			"text":"`acc_age_`",
-			"styleAttributes":{},
-			"x":-360,
-			"y":1320,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
+		{"id":"c87d5d289c9d17e7","type":"group","x":280,"y":-1120,"width":800,"height":689,"color":"6","label":"Quat::integrate()"},
 		{
 			"id":"7676f7939ee5505d",
 			"type":"text",
@@ -82,138 +16,69 @@
 			"width":260,
 			"height":60
 		},
-		{
-			"id":"c8ed22d427286442",
-			"type":"text",
-			"text":"gyro_ (w_x, w_y, w_z)",
-			"styleAttributes":{},
-			"x":-3080,
-			"y":-579,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
 		{"id":"0ae811830d3e1912","type":"text","text":"observe(acc)\n· normalize → 存入 acc_\n· acc_age_ = 0","x":-3640,"y":1275,"width":400,"height":150},
-		{
-			"id":"8e56237a163d01f9",
-			"type":"text",
-			"text":"correction_heading\n```cpp\nmath::Vec3f Mahony::correction_heading(const math::Vec3f& v) {\n    // Gating\n    if (!is_heading_valid()) { return math::Vec3f(0.0f, 0.0f, 0.0f); }\n    // 航向残差 = 参考 − 估计；必须 wrap 到 [−π,π] 再限幅（每周期用当前 q̂ 现算，不得冻结）\n    float roll, pitch, psi;\n    q_.to_euler(roll, pitch, psi);\n    float e_heading = math::wrap_pi(heading_ref_ + heading_offset_ - psi);\n    e_heading = math::clamp(e_heading, -k_half_pi, k_half_pi);\n    // 绕世界z轴转 == body系中沿重力方向 v 加角速度（v 由上面的统一消费口给出，本周期只算一次）\n    const float k = cfg_.kp_heading_ * heading_trust_ * e_heading;      // 增益\n    // 该通道的角速度修正项 = 大小 k 沿重力轴 v̂（纯 P）\n    return math::Vec3f(k * v.x_, k * v.y_, k * v.z_);\n}\n```",
-			"styleAttributes":{},
-			"x":-970,
-			"y":240,
-			"width":780,
-			"height":420,
-			"color":"6"
-		},
-		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-260,"y":-217,"width":660,"height":295,"color":"6"},
-		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":860,"y":-16,"width":740,"height":480},
-		{
-			"id":"58c03ca2b18cb5de",
-			"type":"text",
-			"text":"q̇ = ½·q ⊗ (0,ω)",
-			"styleAttributes":{},
-			"x":900,
-			"y":-116,
-			"width":260,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"d806a518218b05f2",
-			"type":"text",
-			"text":"q_k+1 = normalize( q_k + q̇·dt )",
-			"styleAttributes":{},
-			"x":1260,
-			"y":-116,
-			"width":320,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"03867398abd66e85",
-			"type":"text",
-			"text":"omega_c",
-			"styleAttributes":{},
-			"x":480,
-			"y":140,
-			"width":260,
-			"height":60,
-			"color":"2"
-		},
-		{
-			"id":"1fded3dc9b0e249b",
-			"type":"text",
-			"text":"q_ (q_k+1)",
-			"styleAttributes":{},
-			"x":-390,
-			"y":-640,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
-		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-3840,"y":-330,"width":420,"height":240,"color":"4"},
-		{
-			"id":"3511a8d02caa8d17",
-			"type":"text",
-			"text":"acc_(a_x, a_y, a_z)",
-			"styleAttributes":{},
-			"x":-3800,
-			"y":260,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
-		{
-			"id":"bf197f3acc7a412f",
-			"type":"text",
-			"text":"is_acc_valid()\n",
-			"styleAttributes":{},
-			"x":-1740,
-			"y":430,
-			"width":180,
-			"height":60,
-			"color":"6"
-		},
-		{
-			"id":"66cdba5bb81c8f01",
-			"type":"text",
-			"text":"`e_int_ += e_acc·dt`（clamp ±integral_limit_）",
-			"styleAttributes":{},
-			"x":-1440,
-			"y":430,
-			"width":400,
-			"height":60,
-			"color":"2"
-		},
 		{
 			"id":"bd2450c6ec04bc50",
 			"type":"text",
-			"text":"unified consumption interface v̂\n```cpp\nconst math::Vec3f v = q_.conjugated().rotate(k_gravity_world);\n```",
+			"text":"unified consumption interface \n```cpp\nconst math::Vec3f v = q_.conjugated().rotate(k_gravity_world);\n```",
 			"styleAttributes":{},
-			"x":-2740,
-			"y":-290,
+			"x":-2880,
+			"y":-880,
 			"width":620,
 			"height":120,
 			"color":"5"
 		},
 		{
-			"id":"626152c7b00f9f32",
+			"id":"13b28dd6ecc07af0",
 			"type":"text",
-			"text":"CODE\n```cpp\nmath::Vec3f Mahony::correction_acc(const math::Vec3f& v, float dt) {\n    // Gating\n    if (!is_acc_valid()) { return math::Vec3f(0.0f, 0.0f, 0.0f); }\n    // 算error\n    const math::Vec3f e_acc = acc_.cross(v);\n    // error integral (also zero offset)\n    e_int_.x_ += e_acc.x_ * dt;\n    e_int_.y_ += e_acc.y_ * dt;\n    e_int_.z_ += e_acc.z_ * dt;\n    // integral limit\n    e_int_.x_ = math::clamp(e_int_.x_, -cfg_.integral_limit_, cfg_.integral_limit_);\n    e_int_.y_ = math::clamp(e_int_.y_, -cfg_.integral_limit_, cfg_.integral_limit_);\n    e_int_.z_ = math::clamp(e_int_.z_, -cfg_.integral_limit_, cfg_.integral_limit_);\n    // 修正折进角速度：ω_corrected = ω + Kp·e + Ki·∫e\n    return math::Vec3f(cfg_.kp_ * e_acc.x_ + cfg_.ki_ * e_int_.x_,\n                       cfg_.kp_ * e_acc.y_ + cfg_.ki_ * e_int_.y_,\n                       cfg_.kp_ * e_acc.z_ + cfg_.ki_ * e_int_.z_);\n}\n```",
+			"text":"OutputStatus",
 			"styleAttributes":{},
-			"x":-1240,
-			"y":-1440,
-			"width":920,
-			"height":540,
+			"x":-1960,
+			"y":-2680,
+			"width":260,
+			"height":60,
 			"color":"6"
 		},
+		{
+			"id":"8e56237a163d01f9",
+			"type":"text",
+			"text":"correction_heading\n```cpp\nmath::Vec3f Mahony::correction_heading(const math::Vec3f& v) {\n    // Gating\n    if (!is_heading_valid()) { return math::Vec3f(0.0f, 0.0f, 0.0f); }\n    // 航向残差 = 参考 − 估计；必须 wrap 到 [−π,π] 再限幅（每周期用当前 q̂ 现算，不得冻结）\n    float roll, pitch, psi;\n    q_.to_euler(roll, pitch, psi);\n    float e_heading = math::wrap_pi(heading_ref_ + heading_offset_ - psi);\n    e_heading = math::clamp(e_heading, -k_half_pi, k_half_pi);\n    // 绕世界z轴转 == body系中沿重力方向 v 加角速度（v 由上面的统一消费口给出，本周期只算一次）\n    const float k = cfg_.kp_heading_ * heading_trust_ * e_heading;      // 增益\n    // 该通道的角速度修正项 = 大小 k 沿重力轴 v̂（纯 P）\n    return math::Vec3f(k * v.x_, k * v.y_, k * v.z_);\n}\n```",
+			"styleAttributes":{},
+			"x":-1307,
+			"y":-520,
+			"width":780,
+			"height":420
+		},
+		{
+			"id":"3511a8d02caa8d17",
+			"type":"text",
+			"text":"acc_(a_x, a_y, a_z)",
+			"styleAttributes":{},
+			"x":-3360,
+			"y":-1420,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"c8ed22d427286442",
+			"type":"text",
+			"text":"gyro_ (w_x, w_y, w_z)",
+			"styleAttributes":{},
+			"x":-3360,
+			"y":-160,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-3440,"y":-880,"width":420,"height":240,"color":"4"},
 		{
 			"id":"59146558a1cd36c6",
 			"type":"text",
 			"text":"is_heading_valid()",
 			"styleAttributes":{},
-			"x":-1810,
-			"y":-1590,
+			"x":-2040,
+			"y":440,
 			"width":180,
 			"height":60,
 			"color":"6"
@@ -223,21 +88,111 @@
 			"type":"text",
 			"text":"打滑检测-->降权trust",
 			"styleAttributes":{},
-			"x":-2030,
-			"y":-1840,
-			"width":260,
-			"height":60
-		},
-		{
-			"id":"13b28dd6ecc07af0",
-			"type":"text",
-			"text":"OutputStatus",
-			"styleAttributes":{},
-			"x":-1520,
-			"y":-2220,
+			"x":-2210,
+			"y":840,
 			"width":260,
 			"height":60,
 			"color":"6"
+		},
+		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":300,"y":-967,"width":740,"height":480},
+		{
+			"id":"58c03ca2b18cb5de",
+			"type":"text",
+			"text":"q̇ = ½·q ⊗ (0,ω)",
+			"styleAttributes":{},
+			"x":340,
+			"y":-1067,
+			"width":260,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"d806a518218b05f2",
+			"type":"text",
+			"text":"q_k+1 = normalize( q_k + q̇·dt )",
+			"styleAttributes":{},
+			"x":700,
+			"y":-1067,
+			"width":320,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"03867398abd66e85",
+			"type":"text",
+			"text":"omega_c",
+			"styleAttributes":{},
+			"x":-80,
+			"y":-811,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"626152c7b00f9f32",
+			"type":"text",
+			"text":"CODE\n```cpp\nmath::Vec3f Mahony::correction_acc(const math::Vec3f& v, float dt) {\n    // Gating\n    if (!is_acc_valid()) { return math::Vec3f(0.0f, 0.0f, 0.0f); }\n    // 算error\n    const math::Vec3f e_acc = acc_.cross(v);\n    // error integral (also zero offset)\n    e_int_.x_ += e_acc.x_ * dt;\n    e_int_.y_ += e_acc.y_ * dt;\n    e_int_.z_ += e_acc.z_ * dt;\n    // integral limit\n    e_int_.x_ = math::clamp(e_int_.x_, -cfg_.integral_limit_, cfg_.integral_limit_);\n    e_int_.y_ = math::clamp(e_int_.y_, -cfg_.integral_limit_, cfg_.integral_limit_);\n    e_int_.z_ = math::clamp(e_int_.z_, -cfg_.integral_limit_, cfg_.integral_limit_);\n    // 修正折进角速度：ω_corrected = ω + Kp·e + Ki·∫e\n    return math::Vec3f(cfg_.kp_ * e_acc.x_ + cfg_.ki_ * e_int_.x_,\n                       cfg_.kp_ * e_acc.y_ + cfg_.ki_ * e_int_.y_,\n                       cfg_.kp_ * e_acc.z_ + cfg_.ki_ * e_int_.z_);\n}\n```",
+			"styleAttributes":{},
+			"x":-1440,
+			"y":-2440,
+			"width":920,
+			"height":540
+		},
+		{
+			"id":"bf197f3acc7a412f",
+			"type":"text",
+			"text":"is_acc_valid()\n",
+			"styleAttributes":{},
+			"x":-2080,
+			"y":-2400,
+			"width":180,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"6cfaaadd07faff4f",
+			"type":"text",
+			"text":"cross",
+			"styleAttributes":{},
+			"x":-2080,
+			"y":-2200,
+			"width":260,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"b120398056ff65ba",
+			"type":"text",
+			"text":"error",
+			"styleAttributes":{},
+			"x":-1760,
+			"y":-2200,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"3392039b8010150f",
+			"type":"text",
+			"text":"`e_int_` (clamp)",
+			"styleAttributes":{},
+			"x":-1760,
+			"y":-2000,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-1960,"y":-1760,"width":660,"height":295,"color":"6"},
+		{
+			"id":"1fded3dc9b0e249b",
+			"type":"text",
+			"text":"q_ (q_k+1)",
+			"styleAttributes":{},
+			"x":-780,
+			"y":-1240,
+			"width":260,
+			"height":60,
+			"color":"1"
 		}
 	],
 	"edges":[
@@ -260,80 +215,6 @@
 			"toSide":"left"
 		},
 		{
-			"id":"7e729cdaa6627f10",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"1643ba5dd71e15bb",
-			"fromSide":"bottom",
-			"toNode":"3511a8d02caa8d17",
-			"toSide":"top"
-		},
-		{
-			"id":"305fee2387bd7a25",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"1643ba5dd71e15bb",
-			"fromSide":"top",
-			"toNode":"c8ed22d427286442",
-			"toSide":"bottom"
-		},
-		{
-			"id":"f1161ebae0073b81",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"4562412b92cfdb46",
-			"fromSide":"left",
-			"toNode":"8d063fab45c399e2",
-			"toSide":"right"
-		},
-		{
-			"id":"18316e0b6b1e0e13",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"8d063fab45c399e2",
-			"fromSide":"top",
-			"toNode":"64ef86e90c06b30b",
-			"toSide":"bottom"
-		},
-		{
-			"id":"24b4fd4544d3eb40",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"64ef86e90c06b30b",
-			"fromSide":"top",
-			"toNode":"ae52b165476b2caa",
-			"toSide":"bottom",
-			"label":"="
-		},
-		{
-			"id":"6b3d857ebf250355",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"64ef86e90c06b30b",
-			"fromSide":"right",
-			"toNode":"160bfa696174e1d6",
-			"toSide":"bottom",
-			"label":"integral"
-		},
-		{
-			"id":"504786304d58b578",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"17be67f767659b8e",
-			"fromSide":"bottom",
-			"toNode":"59146558a1cd36c6",
-			"toSide":"left"
-		},
-		{
-			"id":"f08f65d4af1eed8a",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"bf197f3acc7a412f",
-			"fromSide":"right",
-			"toNode":"66cdba5bb81c8f01",
-			"toSide":"left"
-		},
-		{
 			"id":"c09326630206e946",
 			"styleAttributes":{},
 			"toFloating":false,
@@ -343,31 +224,114 @@
 			"toSide":"right"
 		},
 		{
-			"id":"7830eaaf2cded7f1",
+			"id":"cdd1ba55a4f2e05d",
 			"styleAttributes":{},
 			"toFloating":false,
-			"fromNode":"0b904532131ebb10",
+			"fromNode":"6cfaaadd07faff4f",
 			"fromSide":"right",
-			"toNode":"03867398abd66e85",
+			"toNode":"b120398056ff65ba",
 			"toSide":"left"
 		},
 		{
-			"id":"3548c5937917941c",
+			"id":"2fac3632a0f41fe0",
 			"styleAttributes":{},
 			"toFloating":false,
-			"fromNode":"8e56237a163d01f9",
-			"fromSide":"right",
-			"toNode":"03867398abd66e85",
-			"toSide":"left"
-		},
-		{
-			"id":"d923f700b095fa3f",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"bd2450c6ec04bc50",
+			"fromNode":"b120398056ff65ba",
 			"fromSide":"bottom",
-			"toNode":"8e56237a163d01f9",
+			"toNode":"3392039b8010150f",
+			"toSide":"top"
+		},
+		{
+			"id":"fafa596aad17c4ee",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"3392039b8010150f",
+			"fromSide":"bottom",
+			"toNode":"0b904532131ebb10",
+			"toSide":"top"
+		},
+		{
+			"id":"635512b333422cca",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"3511a8d02caa8d17",
+			"fromSide":"right",
+			"toNode":"6cfaaadd07faff4f",
 			"toSide":"left"
+		},
+		{
+			"id":"0e6f4c9c68c18457",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"3511a8d02caa8d17",
+			"fromSide":"right",
+			"toNode":"0b904532131ebb10",
+			"toSide":"left"
+		},
+		{
+			"id":"717416775fb8fb34",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromFloating":false,
+			"fromNode":"bd2450c6ec04bc50",
+			"fromSide":"top",
+			"toNode":"6cfaaadd07faff4f",
+			"toSide":"left",
+			"label":"v̂"
+		},
+		{
+			"id":"e8a397a4c5c66cf6",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1643ba5dd71e15bb",
+			"fromSide":"top",
+			"toNode":"3511a8d02caa8d17",
+			"toSide":"bottom"
+		},
+		{
+			"id":"401803101060c97a",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1643ba5dd71e15bb",
+			"fromSide":"bottom",
+			"toNode":"c8ed22d427286442",
+			"toSide":"top"
+		},
+		{
+			"id":"64bdcfec9f268b73",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"17be67f767659b8e",
+			"fromSide":"top",
+			"toNode":"59146558a1cd36c6",
+			"toSide":"bottom"
+		},
+		{
+			"id":"84c0167153d7ebdf",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"6342b2567535b786",
+			"fromSide":"right",
+			"toNode":"03867398abd66e85",
+			"toSide":"left"
+		},
+		{
+			"id":"dda23f7b0521e87e",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"93c4b515fc669f03",
+			"fromSide":"right",
+			"toNode":"03867398abd66e85",
+			"toSide":"left"
+		},
+		{
+			"id":"ee8804817a356719",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"1fded3dc9b0e249b",
+			"fromSide":"left",
+			"toNode":"bd2450c6ec04bc50",
+			"toSide":"right"
 		}
 	],
 	"metadata":{
