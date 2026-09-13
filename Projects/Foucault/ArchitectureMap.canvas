@@ -4,7 +4,7 @@
 		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-420,"y":1220,"width":1500,"height":844,"label":"Mahony::observe()"},
 		{"id":"170321f30d4c6c41","type":"group","x":-1600,"y":1220,"width":1120,"height":844,"label":"Mahony::observe_heading()"},
 		{"id":"c87d5d289c9d17e7","type":"group","x":840,"y":-330,"width":800,"height":660,"color":"6","label":"Quat::integrate()"},
-		{"id":"f233795e1543edf9","type":"group","x":-2320,"y":1220,"width":340,"height":780,"label":"Gating"},
+		{"id":"f233795e1543edf9","type":"group","x":-1380,"y":-390,"width":340,"height":780,"label":"Gating"},
 		{
 			"id":"1fded3dc9b0e249b",
 			"type":"text",
@@ -92,31 +92,7 @@
 			"width":260,
 			"height":60
 		},
-		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-2360,"y":60,"width":420,"height":240,"color":"4"},
-		{
-			"id":"3511a8d02caa8d17",
-			"type":"text",
-			"text":"acc_(a_x, a_y, a_z)",
-			"styleAttributes":{},
-			"x":-2280,
-			"y":690,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
 		{"id":"0ae811830d3e1912","type":"text","text":"observe(acc)\n· normalize → 存入 acc_\n· acc_age_ = 0","x":-1940,"y":645,"width":400,"height":150},
-		{
-			"id":"c8ed22d427286442",
-			"type":"text",
-			"text":"gyro_ (w_x, w_y, w_z)",
-			"styleAttributes":{},
-			"x":-2280,
-			"y":-569,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
-		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-300,"y":-147,"width":660,"height":295,"color":"6"},
 		{
 			"id":"03867398abd66e85",
 			"type":"text",
@@ -127,17 +103,6 @@
 			"width":260,
 			"height":60,
 			"color":"2"
-		},
-		{
-			"id":"5235b7e3978536b1",
-			"type":"text",
-			"text":"has_valid_acc()",
-			"styleAttributes":{},
-			"x":-300,
-			"y":260,
-			"width":260,
-			"height":60,
-			"color":"6"
 		},
 		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":860,"y":-190,"width":740,"height":480},
 		{
@@ -162,13 +127,36 @@
 			"height":60,
 			"color":"5"
 		},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-3160,"y":50,"width":420,"height":240,"color":"4"},
+		{
+			"id":"c8ed22d427286442",
+			"type":"text",
+			"text":"gyro_ (w_x, w_y, w_z)",
+			"styleAttributes":{},
+			"x":-3080,
+			"y":-579,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{
+			"id":"3511a8d02caa8d17",
+			"type":"text",
+			"text":"acc_(a_x, a_y, a_z)",
+			"styleAttributes":{},
+			"x":-3080,
+			"y":680,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
 		{
 			"id":"13b28dd6ecc07af0",
 			"type":"text",
 			"text":"OutputStatus",
 			"styleAttributes":{},
-			"x":-2280,
-			"y":1240,
+			"x":-1340,
+			"y":-370,
 			"width":260,
 			"height":60,
 			"color":"6"
@@ -178,8 +166,8 @@
 			"type":"text",
 			"text":"is_acc_valid()\n",
 			"styleAttributes":{},
-			"x":-2280,
-			"y":1715,
+			"x":-1300,
+			"y":320,
 			"width":180,
 			"height":60,
 			"color":"6"
@@ -189,12 +177,45 @@
 			"type":"text",
 			"text":"is_heading_valid()",
 			"styleAttributes":{},
-			"x":-2280,
-			"y":1820,
+			"x":-1340,
+			"y":-250,
 			"width":180,
 			"height":60,
 			"color":"6"
-		}
+		},
+		{
+			"id":"17be67f767659b8e",
+			"type":"text",
+			"text":"打滑检测-->降权trust",
+			"styleAttributes":{},
+			"x":-1720,
+			"y":-480,
+			"width":260,
+			"height":60
+		},
+		{
+			"id":"bd2450c6ec04bc50",
+			"type":"text",
+			"text":"unified consumption interface\n```cpp\nconst math::Vec3f v = q_.conjugated().rotate(k_gravity_world);\n```",
+			"styleAttributes":{},
+			"x":-2510,
+			"y":-190,
+			"width":620,
+			"height":120,
+			"color":"5"
+		},
+		{
+			"id":"66cdba5bb81c8f01",
+			"type":"text",
+			"text":"`e_int_ += e_acc·dt`（clamp ±integral_limit_）",
+			"styleAttributes":{},
+			"x":-960,
+			"y":320,
+			"width":400,
+			"height":60,
+			"color":"2"
+		},
+		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-280,"y":-146,"width":660,"height":295,"color":"6"}
 	],
 	"edges":[
 		{
@@ -290,13 +311,42 @@
 			"toSide":"right"
 		},
 		{
-			"id":"f197383f33e072fe",
+			"id":"504786304d58b578",
 			"styleAttributes":{},
 			"toFloating":false,
-			"fromNode":"5235b7e3978536b1",
-			"fromSide":"top",
-			"toNode":"0b904532131ebb10",
-			"toSide":"bottom"
+			"fromNode":"17be67f767659b8e",
+			"fromSide":"bottom",
+			"toNode":"59146558a1cd36c6",
+			"toSide":"left"
+		},
+		{
+			"id":"47dc76f2c2b58f86",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"bd2450c6ec04bc50",
+			"fromSide":"bottom",
+			"toNode":"59146558a1cd36c6",
+			"toSide":"left",
+			"label":"v̂"
+		},
+		{
+			"id":"c48000cdb21808b6",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"bd2450c6ec04bc50",
+			"fromSide":"bottom",
+			"toNode":"bf197f3acc7a412f",
+			"toSide":"left",
+			"label":"v̂"
+		},
+		{
+			"id":"f08f65d4af1eed8a",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"bf197f3acc7a412f",
+			"fromSide":"right",
+			"toNode":"66cdba5bb81c8f01",
+			"toSide":"left"
 		}
 	],
 	"metadata":{
