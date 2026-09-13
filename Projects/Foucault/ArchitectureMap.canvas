@@ -1,10 +1,10 @@
 {
 	"nodes":[
-		{"id":"c83f4d99c7cb2738","type":"group","x":-320,"y":300,"width":2040,"height":780,"label":"Mahony::predict()"},
+		{"id":"c83f4d99c7cb2738","type":"group","x":-360,"y":-400,"width":2040,"height":780,"label":"Mahony::predict()"},
 		{"id":"f0daa2d937107695","type":"group","ratio":1.7777777777777777,"x":-420,"y":1220,"width":1500,"height":844,"label":"Mahony::observe()"},
-		{"id":"170321f30d4c6c41","type":"group","x":660,"y":2760,"width":1060,"height":580,"label":"observe_yaw"},
-		{"id":"f233795e1543edf9","type":"group","x":-420,"y":2200,"width":960,"height":560,"label":"Gating"},
-		{"id":"c87d5d289c9d17e7","type":"group","x":880,"y":370,"width":800,"height":660,"color":"6","label":"Quat::integrate()"},
+		{"id":"170321f30d4c6c41","type":"group","x":-1600,"y":1220,"width":1120,"height":844,"label":"Mahony::observe_heading()"},
+		{"id":"c87d5d289c9d17e7","type":"group","x":840,"y":-330,"width":800,"height":660,"color":"6","label":"Quat::integrate()"},
+		{"id":"f233795e1543edf9","type":"group","x":-2320,"y":1220,"width":340,"height":780,"label":"Gating"},
 		{
 			"id":"1fded3dc9b0e249b",
 			"type":"text",
@@ -15,52 +15,6 @@
 			"width":260,
 			"height":60,
 			"color":"1"
-		},
-		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":900,"y":510,"width":740,"height":480},
-		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-260,"y":553,"width":660,"height":295,"color":"6"},
-		{
-			"id":"03867398abd66e85",
-			"type":"text",
-			"text":"omega_c",
-			"styleAttributes":{},
-			"x":500,
-			"y":671,
-			"width":260,
-			"height":60,
-			"color":"2"
-		},
-		{
-			"id":"58c03ca2b18cb5de",
-			"type":"text",
-			"text":"q̇ = ½·q ⊗ (0,ω)",
-			"styleAttributes":{},
-			"x":940,
-			"y":410,
-			"width":260,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"d806a518218b05f2",
-			"type":"text",
-			"text":"q_k+1 = normalize( q_k + q̇·dt )",
-			"styleAttributes":{},
-			"x":1300,
-			"y":410,
-			"width":320,
-			"height":60,
-			"color":"5"
-		},
-		{
-			"id":"5235b7e3978536b1",
-			"type":"text",
-			"text":"has_valid_acc()",
-			"styleAttributes":{},
-			"x":-260,
-			"y":960,
-			"width":260,
-			"height":60,
-			"color":"6"
 		},
 		{
 			"id":"8d063fab45c399e2",
@@ -117,41 +71,6 @@
 			"height":60,
 			"color":"2"
 		},
-		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-1280,"y":1300,"width":420,"height":240,"color":"4"},
-		{
-			"id":"3511a8d02caa8d17",
-			"type":"text",
-			"text":"acc_(a_x, a_y, a_z)",
-			"styleAttributes":{},
-			"x":-1200,
-			"y":1930,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
-		{
-			"id":"c8ed22d427286442",
-			"type":"text",
-			"text":"gyro_ (w_x, w_y, w_z)",
-			"styleAttributes":{},
-			"x":-1200,
-			"y":671,
-			"width":260,
-			"height":60,
-			"color":"1"
-		},
-		{"id":"0ae811830d3e1912","type":"text","text":"observe(acc)\n· normalize → 存入 acc_\n· acc_age_ = 0","x":-860,"y":1885,"width":400,"height":150},
-		{
-			"id":"bf197f3acc7a412f",
-			"type":"text",
-			"text":"is_acc_valid()\n",
-			"styleAttributes":{},
-			"x":-380,
-			"y":2320,
-			"width":180,
-			"height":60,
-			"color":"6"
-		},
 		{
 			"id":"a783dddb34fcc2df",
 			"type":"text",
@@ -164,24 +83,115 @@
 			"color":"1"
 		},
 		{
-			"id":"59146558a1cd36c6",
+			"id":"7676f7939ee5505d",
 			"type":"text",
-			"text":"is_heading_valid()",
+			"text":"external reference",
 			"styleAttributes":{},
-			"x":-380,
-			"y":2440,
-			"width":180,
+			"x":-2420,
+			"y":2400,
+			"width":260,
+			"height":60
+		},
+		{"id":"1643ba5dd71e15bb","type":"file","file":"Projects/Foucault/assets/struct IMUSample.md","x":-2360,"y":60,"width":420,"height":240,"color":"4"},
+		{
+			"id":"3511a8d02caa8d17",
+			"type":"text",
+			"text":"acc_(a_x, a_y, a_z)",
+			"styleAttributes":{},
+			"x":-2280,
+			"y":690,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{"id":"0ae811830d3e1912","type":"text","text":"observe(acc)\n· normalize → 存入 acc_\n· acc_age_ = 0","x":-1940,"y":645,"width":400,"height":150},
+		{
+			"id":"c8ed22d427286442",
+			"type":"text",
+			"text":"gyro_ (w_x, w_y, w_z)",
+			"styleAttributes":{},
+			"x":-2280,
+			"y":-569,
+			"width":260,
+			"height":60,
+			"color":"1"
+		},
+		{"id":"0b904532131ebb10","type":"file","file":"Projects/Foucault/assets/Mahony PI控制器.md","x":-300,"y":-147,"width":660,"height":295,"color":"6"},
+		{
+			"id":"03867398abd66e85",
+			"type":"text",
+			"text":"omega_c",
+			"styleAttributes":{},
+			"x":460,
+			"y":-29,
+			"width":260,
+			"height":60,
+			"color":"2"
+		},
+		{
+			"id":"5235b7e3978536b1",
+			"type":"text",
+			"text":"has_valid_acc()",
+			"styleAttributes":{},
+			"x":-300,
+			"y":260,
+			"width":260,
 			"height":60,
 			"color":"6"
+		},
+		{"id":"81f775e74dcf4ab1","type":"file","file":"Projects/Foucault/assets/integrate().md","x":860,"y":-190,"width":740,"height":480},
+		{
+			"id":"58c03ca2b18cb5de",
+			"type":"text",
+			"text":"q̇ = ½·q ⊗ (0,ω)",
+			"styleAttributes":{},
+			"x":900,
+			"y":-290,
+			"width":260,
+			"height":60,
+			"color":"5"
+		},
+		{
+			"id":"d806a518218b05f2",
+			"type":"text",
+			"text":"q_k+1 = normalize( q_k + q̇·dt )",
+			"styleAttributes":{},
+			"x":1260,
+			"y":-290,
+			"width":320,
+			"height":60,
+			"color":"5"
 		},
 		{
 			"id":"13b28dd6ecc07af0",
 			"type":"text",
 			"text":"OutputStatus",
 			"styleAttributes":{},
-			"x":-380,
-			"y":2560,
+			"x":-2280,
+			"y":1240,
 			"width":260,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"bf197f3acc7a412f",
+			"type":"text",
+			"text":"is_acc_valid()\n",
+			"styleAttributes":{},
+			"x":-2280,
+			"y":1715,
+			"width":180,
+			"height":60,
+			"color":"6"
+		},
+		{
+			"id":"59146558a1cd36c6",
+			"type":"text",
+			"text":"is_heading_valid()",
+			"styleAttributes":{},
+			"x":-2280,
+			"y":1820,
+			"width":180,
 			"height":60,
 			"color":"6"
 		}
@@ -215,15 +225,6 @@
 			"toSide":"left"
 		},
 		{
-			"id":"96c4b89ba07589f3",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"c8ed22d427286442",
-			"fromSide":"right",
-			"toNode":"0b904532131ebb10",
-			"toSide":"left"
-		},
-		{
 			"id":"7e729cdaa6627f10",
 			"styleAttributes":{},
 			"toFloating":false,
@@ -233,15 +234,6 @@
 			"toSide":"top"
 		},
 		{
-			"id":"5045cdb7beee22a7",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"1fded3dc9b0e249b",
-			"fromSide":"bottom",
-			"toNode":"4562412b92cfdb46",
-			"toSide":"right"
-		},
-		{
 			"id":"305fee2387bd7a25",
 			"styleAttributes":{},
 			"toFloating":false,
@@ -249,15 +241,6 @@
 			"fromSide":"top",
 			"toNode":"c8ed22d427286442",
 			"toSide":"bottom"
-		},
-		{
-			"id":"f971bded251535fa",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"3511a8d02caa8d17",
-			"fromSide":"right",
-			"toNode":"8d063fab45c399e2",
-			"toSide":"left"
 		},
 		{
 			"id":"f1161ebae0073b81",
@@ -314,34 +297,6 @@
 			"fromSide":"top",
 			"toNode":"0b904532131ebb10",
 			"toSide":"bottom"
-		},
-		{
-			"id":"74d3731a44346c36",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"ae52b165476b2caa",
-			"fromSide":"top",
-			"toNode":"0b904532131ebb10",
-			"toSide":"bottom"
-		},
-		{
-			"id":"aa646bf71299e7d4",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromNode":"160bfa696174e1d6",
-			"fromSide":"top",
-			"toNode":"0b904532131ebb10",
-			"toSide":"bottom"
-		},
-		{
-			"id":"c22aee5e1195649a",
-			"styleAttributes":{},
-			"toFloating":false,
-			"fromFloating":false,
-			"fromNode":"5235b7e3978536b1",
-			"fromSide":"bottom",
-			"toNode":"a783dddb34fcc2df",
-			"toSide":"top"
 		}
 	],
 	"metadata":{
