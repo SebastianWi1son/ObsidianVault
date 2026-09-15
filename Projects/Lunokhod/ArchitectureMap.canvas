@@ -3,10 +3,20 @@
 		{
 			"id":"d12534a91c3f619b",
 			"type":"text",
-			"text":"",
+			"text":"contracts",
 			"styleAttributes":{},
 			"x":-260,
 			"y":-220,
+			"width":260,
+			"height":60
+		},
+		{
+			"id":"1cd2cc47130b8d19",
+			"type":"text",
+			"text":"CRTP Kernel",
+			"styleAttributes":{},
+			"x":-280,
+			"y":20,
 			"width":260,
 			"height":60
 		}
