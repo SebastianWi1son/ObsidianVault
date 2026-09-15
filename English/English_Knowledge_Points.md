@@ -7,29 +7,29 @@
 
 ## 一、高频词汇辨析（最易丢分）
 
-| # | 错误 | 正确 | 要点 |
-|---|---|---|---|
-| 1 | estimate the expression | **assess** my **phrasing** | estimate 估算数值；assess 评价质量。中文都能说"评估"，英文分家 |
-| 2 | the hide line | the **dividing line** / boundary | hide 是动词不能修饰名词。"分界线"用 dividing line |
-| 3 | hurt the demand | **obscure the meaning** | 中式直译。"影响理解"用 obscure / get in the way of |
-| 4 | question u (提问) | **ask** you | question 作动词偏"盘问/质询"（警察 question 嫌疑人） |
-| 5 | a new cpp trait | a new C++ **feature** | 语言"特性"用 feature；trait 指人的性格特质，且在 C++ 里是专有术语（type traits） |
-| 6 | abort #ifndef | **abandon / deprecate** #ifndef | abort 中途终止正在进行的动作；弃用用 abandon / deprecate |
-| 7 | 常用 / 冷门 | **commonly used** / **obscure / niche** | niche 偏中性"小众"，obscure 偏"没人知道" |
-| 8 | a convenient works | a convenient **shortcut** | works 是动词三单或"工厂/作品集"，不通 |
-| 9 | dev rules | **coding standards** / **style guide** | 行业标准说法是 coding standards 或 style guide |
-| 10 | C bound | **written in C** / **C-based** | -bound 意为"被…束缚/开往…"（duty-bound） |
-| 11 | less space for cpp | less **room** for C++ | 抽象"空间/余地"用 room：room for improvement |
-| 12 | a origin varible | **an original variable** | origin 是名词"起源"；形容词是 original。元音开头用 an |
-| 13 | instructor (协调者) | **coordinator** / dispatcher | instructor = 教员 |
-| 14 | 右值 reference | **rvalue** reference | 右值 rvalue、左值 lvalue。家族：rvalue reference / move semantics / std::move |
-| 15 | i gonna say | **I'd say** | gonna 是口语拼写。"要我说的话"最地道是 I'd say |
-| 16 | up to demand | **as needed** / **on demand** | up to 是"多达/取决于"（up to you） |
-| 17 | nearly replace | **largely** replace | largely 大体上；nearly 差一点点就 |
-| 18 | in special condition | in **specific situations** / special cases | condition 偏"条件/病情" |
-| 19 | clean snipaste out | **remove / uninstall** Snipaste | clean out 是"清空容器内部"（clean out the garage） |
-| 20 | i found that u said | I **noticed** (that) you said | notice 注意到一句话；found 偏经查证后发现 |
-| 21 | it make c looks heavy | it **makes** C **look** heavy | 使役结构：make + 宾语 + 动词原形（look 还原形） |
+| #   | 错误                      | 正确                                         | 要点                                                                   |
+| --- | ----------------------- | ------------------------------------------ | -------------------------------------------------------------------- |
+| 1   | estimate the expression | **assess** my **phrasing**                 | estimate 估算数值；assess 评价质量。中文都能说"评估"，英文分家                             |
+| 2   | the hide line           | the **dividing line** / boundary           | hide 是动词不能修饰名词。"分界线"用 dividing line                                  |
+| 3   | hurt the demand         | **obscure the meaning**                    | 中式直译。"影响理解"用 obscure / get in the way of                             |
+| 4   | question u (提问)         | **ask** you                                | question 作动词偏"盘问/质询"（警察 question 嫌疑人）                                |
+| 5   | a new cpp trait         | a new C++ **feature**                      | 语言"特性"用 feature；trait 指人的性格特质，且在 C++ 里是专有术语（type traits）             |
+| 6   | abort #ifndef           | **abandon / deprecate** #ifndef            | abort 中途终止正在进行的动作；弃用用 abandon / deprecate                            |
+| 7   | 常用 / 冷门                 | **commonly used** / **obscure / niche**    | niche 偏中性"小众"，obscure 偏"没人知道"                                        |
+| 8   | a convenient works      | a convenient **shortcut**                  | works 是动词三单或"工厂/作品集"，不通                                              |
+| 9   | dev rules               | **coding standards** / **style guide**     | 行业标准说法是 coding standards 或 style guide                               |
+| 10  | C bound                 | **written in C** / **C-based**             | -bound 意为"被…束缚/开往…"（duty-bound）                                      |
+| 11  | less space for cpp      | less **room** for C++                      | 抽象"空间/余地"用 room：room for improvement                                 |
+| 12  | a origin varible        | **an original variable**                   | origin 是名词"起源"；形容词是 original。元音开头用 an                                |
+| 13  | instructor (协调者)        | **coordinator** / dispatcher               | instructor = 教员                                                      |
+| 14  | 右值 reference            | **rvalue** reference                       | 右值 rvalue、左值 lvalue。家族：rvalue reference / move semantics / std::move |
+| 15  | i gonna say             | **I'd say**                                | gonna 是口语拼写。"要我说的话"最地道是 I'd say                                      |
+| 16  | up to demand            | **as needed** / **on demand**              | up to 是"多达/取决于"（up to you）                                           |
+| 17  | nearly replace          | **largely** replace                        | largely 大体上；nearly 差一点点就                                             |
+| 18  | in special condition    | in **specific situations** / special cases | condition 偏"条件/病情"                                                   |
+| 19  | clean snipaste out      | **remove / uninstall** Snipaste            | clean out 是"清空容器内部"（clean out the garage）                            |
+| 20  | i found that u said     | I **noticed** (that) you said              | notice 注意到一句话；found 偏经查证后发现                                          |
+| 21  | it make c looks heavy   | it **makes** C **look** heavy              | 使役结构：make + 宾语 + 动词原形（look 还原形）                                      |
 
 ---
 
